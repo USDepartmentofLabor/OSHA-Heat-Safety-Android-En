@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff">
+ 
+    <!-- Application Title -->
+    <LinearLayout
+    	android:orientation="horizontal"
+        android:id="@+id/heatindextitle"
+        android:background="@drawable/heatindextitle"
+        style="@style/AppTitleContainer" 
+        android:layout_alignParentTop="true">
+        <ImageView   
+			android:layout_height="20dp"
+			android:layout_width="69dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginLeft="10dp"
+			android:src="@drawable/osha"
+			android:contentDescription="osha" />
+		<TextView
+			android:id="@+id/AppTitle"
+	        android:text="@string/txtAppTitle"
+			android:contentDescription="@string/txtAppTitle"
+	        style="@style/AppTitle" />
+	    <ImageView   
+        	android:layout_height="35dp"
+			android:layout_width="68.9655172dp"
+			android:layout_marginLeft="10dp"
+			android:src="@drawable/dol"
+			android:contentDescription="" />
+    </LinearLayout>
+    <!-- /End Application Title -->
+	
+	<!-- Everything Between Title and Bottom Menu Bar -->
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="35dp"
+      android:padding="10dp">
+      
+	    <LinearLayout
+	      	android:orientation="horizontal"
+	      	android:layout_width="fill_parent"
+	      	android:layout_height="wrap_content"
+	      	android:paddingBottom="5dp">
+		<TextView
+			android:id="@+id/Precautions"  
+	    	android:text="@string/Precautions"
+			android:contentDescription="@string/Precautions"
+			android:focusable="true"
+	    	style="@style/TitleBox"
+	    	android:nextFocusDown="@+id/heatindex"
+			android:nextFocusRight="@+id/heatindex" />
+		</LinearLayout>
+	
+    	<LinearLayout
+	      	android:orientation="horizontal"
+	      	android:layout_width="fill_parent"
+	      	android:layout_height="wrap_content"
+	      	android:background="@drawable/shape_grey_btn_item"
+	      	android:paddingTop="5dp"
+	      	android:paddingBottom="5dp">
+	      	<TextView 
+	      		android:id="@+id/heatindex"
+		    	android:text="Heat Index:"
+		    	android:contentDescription="Heat Index"
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:gravity="center" 
+		    	android:textSize="14sp"
+		    	android:paddingRight="10dp"
+		    	android:focusable="true"
+                android:nextFocusDown="@+id/maxheatindex"
+                android:nextFocusRight="@+id/maxheatindex"
+                android:nextFocusUp="@+id/Precautions"
+                android:nextFocusLeft="@+id/Precautions" />
+		    <TextView 
+		    	android:id="@+id/maxheatindex"
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:gravity="center" 
+		    	android:textSize="14sp"
+		    	android:focusable="true"
+                android:nextFocusDown="@+id/risklevel"
+                android:nextFocusRight="@+id/risklevel" 
+                android:nextFocusUp="@+id/heatindex"
+                android:nextFocusLeft="@+id/heatindex" />
+		    <TextView 
+		    	android:id="@+id/time"
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:textSize="14sp"
+		    	android:paddingRight="10dp"
+		    	android:paddingLeft="20dp" 
+		    	android:text="NOAA Data Time:"
+		    	android:contentDescription=""
+		    	android:focusable="false" />
+		    <TextView 
+		    	android:id="@+id/maxtime"
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:textSize="14sp"
+		    	android:focusable="false" />
+	    </LinearLayout>
+	    
+    	<LinearLayout
+    		android:id="@+id/supervisorrisklevelresult"
+      		android:orientation="horizontal"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:paddingTop="15dp"
+      		android:paddingBottom="15dp">
+      		<TextView  	 
+      			android:id="@+id/risklevel"
+	    		android:layout_width="wrap_content" 
+	    		android:layout_height="wrap_content" 
+	    		android:text="Risk Level:"
+	    		android:contentDescription="Risk Level" 
+	    		android:paddingRight="10dp"
+	    		android:focusable="true"
+                android:nextFocusDown="@+id/view1"
+                android:nextFocusRight="@+id/view1"
+                android:nextFocusUp="@+id/maxheatindex"
+                android:nextFocusLeft="@+id/maxheatindex" />  
+			<TextView  	 
+				android:id="@+id/view1"   
+	    		android:layout_width="fill_parent" 
+	    		android:layout_height="wrap_content" 
+	    		android:gravity="center"
+				android:focusable="true"
+                android:nextFocusDown="@+id/levels"
+                android:nextFocusRight="@+id/levels"
+                android:nextFocusUp="@+id/risklevel"
+                android:nextFocusLeft="@+id/risklevel"  />  
+	    </LinearLayout>
+    	
+    	<ScrollView 
+	    	android:layout_marginBottom="50dp" 
+	    	android:layout_below="@id/supervisorrisklevelresult" 
+	    	android:id="@+id/workertips"  
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content" 
+	    	android:isScrollContainer="true"> <!-- This makes the main area scrollable -->
+
+			<LinearLayout 
+				android:id="@+id/levels"  
+				android:focusable="true"
+				android:orientation="vertical"  
+				android:layout_width="fill_parent"  
+				android:layout_height="wrap_content"
+				android:gravity="center">  
+							
+				<!-- Low -->
+				<LinearLayout
+					android:id="@+id/Low"
+					android:orientation="vertical"  
+					android:layout_width="fill_parent"  
+					android:layout_height="wrap_content">
+				<TextView
+					android:id="@+id/LowIntro"
+					android:layout_width="wrap_content"  
+					android:layout_height="wrap_content"
+					android:text="@string/LowIntro"
+					android:contentDescription="@string/LowIntro"
+					android:focusable="true"
+					android:nextFocusDown="@+id/low1heading"
+                	android:nextFocusRight="@+id/low1heading" />  	
+					
+				<!-- low1 -->
+				<TextView
+					android:id="@+id/low1heading"
+					style="@style/TipBox"
+					android:text="@string/low1heading"
+					android:contentDescription="@string/low1heading"
+					android:background="#FFFF00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/low1"
+                	android:nextFocusRight="@+id/low1" />
+				<TextView
+					android:id="@+id/low1"
+					style="@style/TipBox"
+					android:text="@string/low1"
+					android:contentDescription="@string/low1"
+					android:focusable="true"
+					android:nextFocusDown="@+id/low2heading"
+                	android:nextFocusRight="@+id/low2heading" />	  
+					<ImageView
+					android:id="@+id/low1_img"
+					android:src="@drawable/img1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:contentDescription="" />		
+				
+				<!-- low2 -->	
+				<TextView
+					android:id="@+id/low2heading"
+					style="@style/TipBox"
+					android:text="@string/low2heading"
+					android:contentDescription="@string/low2heading"
+					android:background="#FFFF00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/low2"
+                	android:nextFocusRight="@+id/low2" />  
+				<TextView
+					android:id="@+id/low2"
+					style="@style/TipBox"
+					android:text="@string/low2"
+					android:contentDescription="@string/low2"
+					android:focusable="true"
+					android:nextFocusDown="@+id/low3heading"
+                	android:nextFocusRight="@+id/low3heading" />   
+					<ImageView
+					android:id="@+id/low2_img"
+					android:src="@drawable/img4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+					
+				<!-- low3 -->	
+				<TextView
+					android:id="@+id/low3heading"
+					style="@style/TipBox"
+					android:text="@string/low3heading"
+					android:contentDescription="@string/low3heading"
+					android:background="#FFFF00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/low3"
+                	android:nextFocusRight="@+id/low3" /> 
+				<TextView
+					android:id="@+id/low3"
+					style="@style/TipBox"
+					android:text="@string/low3"
+					android:contentDescription="@string/low3"
+					android:focusable="true"
+					android:nextFocusDown="@+id/low4heading"
+                	android:nextFocusRight="@+id/low4heading" /> 	
+				<ImageView
+					android:id="@+id/low3_img"
+					android:src="@drawable/img2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+	
+				<!-- low4 -->
+				<TextView
+					android:id="@+id/low4heading"
+					style="@style/TipBox"
+					android:text="@string/low4heading"
+					android:contentDescription="@string/low4heading"
+					android:background="#FFFF00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/low4"
+                	android:nextFocusRight="@+id/low4" />	
+				<TextView
+					android:id="@+id/low4"
+					style="@style/TipBox"
+					android:text="@string/low4"
+					android:contentDescription="@string/low4"
+					android:focusable="true"
+					android:nextFocusDown="@+id/home_button"
+                	android:nextFocusRight="@+id/home_button" />
+				<ImageView
+					android:id="@+id/low4_img"
+					android:src="@drawable/img7"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />		
+				</LinearLayout>	
+					
+				<!-- Moderate -->
+				<LinearLayout
+					android:id="@+id/Moderate"
+					android:orientation="vertical"  
+					android:layout_width="fill_parent"  
+					android:layout_height="wrap_content">
+				<TextView
+					android:id="@+id/ModIntro"
+					android:layout_width="wrap_content"  
+					android:layout_height="wrap_content"
+					android:text="@string/ModIntro"
+					android:contentDescription="@string/ModIntro"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod1header"
+                	android:nextFocusRight="@+id/mod1header" />  
+				<!-- mod 1 -->
+				<TextView
+					android:id="@+id/mod1header"
+					style="@style/TipBox"
+					android:text="@string/mod1header"
+					android:contentDescription="@string/mod1header"
+					android:background="#ffd39b"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod1"
+                	android:nextFocusRight="@+id/mod1" />
+				<TextView
+					android:id="@+id/mod1"
+					style="@style/TipBox"
+					android:text="@string/mod1"
+					android:contentDescription="@string/mod1"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod2header"
+                	android:nextFocusRight="@+id/mod2header" />  
+					<ImageView
+					android:id="@+id/mod1_img"
+					android:src="@drawable/img8"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />	
+				<!-- mod 2 -->
+				<TextView
+					android:id="@+id/mod2header"
+					style="@style/TipBox"
+					android:text="@string/mod2header"
+					android:contentDescription="@string/mod2header"
+					android:background="#ffd39b"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod2"
+                	android:nextFocusRight="@+id/mod2" />	
+				<TextView
+					android:id="@+id/mod2"
+					style="@style/TipBox"
+					android:text="@string/mod2"
+					android:contentDescription="@string/mod2"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod3header"
+                	android:nextFocusRight="@+id/mod3header" />   
+					<ImageView
+					android:id="@+id/mod2_img"
+					android:src="@drawable/img9"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+				<!-- mod 3 -->	
+				<TextView
+					android:id="@+id/mod3header"
+					style="@style/TipBox"
+					android:text="@string/mod3header"
+					android:contentDescription="@string/mod3header"
+					android:background="#ffd39b" 
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod3a"
+                	android:nextFocusRight="@+id/mod3a"/>   	
+				<TextView
+					android:id="@+id/mod3a"
+					style="@style/TipBox"
+					android:text="@string/mod3a"
+					android:contentDescription="@string/mod3a"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod3b"
+                	android:nextFocusRight="@+id/mod3b" />   	
+				<ImageView
+					android:id="@+id/mod3a_img"
+					android:src="@drawable/img5"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:contentDescription="" />
+				<TextView
+					android:id="@+id/mod3b"
+					style="@style/TipBox"
+					android:text="@string/mod3b"
+					android:contentDescription="@string/mod3b"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod4header"
+                	android:nextFocusRight="@+id/mod4header" />   
+				<ImageView
+					android:id="@+id/mod3b_img"
+					android:src="@drawable/img2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+					
+				<!-- mod 4 -->	
+				<TextView
+					android:id="@+id/mod4header"
+					style="@style/TipBox"
+					android:text="@string/mod4header"
+					android:contentDescription="@string/mod4header"
+					android:background="#ffd39b"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod4"
+                	android:nextFocusRight="@+id/mod4" />  
+				<TextView
+					android:id="@+id/mod4"
+					style="@style/TipBox"
+					android:text="@string/mod4"
+					android:contentDescription="@string/mod4"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod5header"
+                	android:nextFocusRight="@+id/mod5header" />   
+					<ImageView
+					android:id="@+id/mod4_img"
+					android:src="@drawable/img7"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+					
+				<!-- mod 5 -->	
+				<TextView
+					android:id="@+id/mod5header"
+					style="@style/TipBox"
+					android:text="@string/mod5header"
+					android:contentDescription="@string/mod5header"
+					android:background="#ffd39b"
+					android:focusable="true"
+					android:nextFocusDown="@+id/mod5"
+                	android:nextFocusRight="@+id/mod5" /> 
+				<TextView
+					android:id="@+id/mod5"
+					style="@style/TipBox"
+					android:text="@string/mod5"
+					android:contentDescription="@string/mod5"
+					android:focusable="true"
+					android:nextFocusDown="@+id/home_button"
+                	android:nextFocusRight="@+id/home_button" /> 
+				<ImageView
+					android:id="@+id/mod5_img"
+					android:src="@drawable/img3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+				</LinearLayout>	
+										
+				<!-- High -->
+				<LinearLayout
+					android:id="@+id/High"
+					android:orientation="vertical"  
+					android:layout_width="fill_parent"  
+					android:layout_height="wrap_content">
+					
+				<TextView
+					android:id="@+id/HighIntro"
+					android:layout_width="wrap_content"  
+					android:layout_height="wrap_content"
+					android:text="@string/HighIntro"
+					android:contentDescription="@string/HighIntro"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high1header"
+                	android:nextFocusRight="@+id/high1header" />  
+				<!-- high 1 -->
+				<TextView
+					android:id="@+id/high1header"
+					style="@style/TipBox"
+					android:text="@string/high1header"
+					android:contentDescription="@string/high1header"
+					android:background="#f78d00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high1"
+                	android:nextFocusRight="@+id/high1" /> 
+				<TextView
+					android:id="@+id/high1"
+					style="@style/TipBox"
+					android:text="@string/high1"
+					android:contentDescription="@string/high1"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high2header"
+                	android:nextFocusRight="@+id/high2header" />  
+					<ImageView
+					android:id="@+id/high1_img"
+					android:src="@drawable/img8"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+					
+				<!-- high 2 -->
+				<TextView
+					android:id="@+id/high2header"
+					style="@style/TipBox"
+					android:text="@string/high2header"
+					android:contentDescription="@string/high2header"
+					android:background="#f78d00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high2"
+                	android:nextFocusRight="@+id/high2" />  
+				<TextView
+					android:id="@+id/high2"
+					style="@style/TipBox"
+					android:text="@string/high2"
+					android:contentDescription="@string/high2"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high3header"
+                	android:nextFocusRight="@+id/high3header" />  
+					<ImageView
+					android:id="@+id/high2_img"
+					android:src="@drawable/img9"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+									
+				<!-- high 3 -->
+				<TextView
+					android:id="@+id/high3header"
+					style="@style/TipBox"
+					android:text="@string/high3header"
+					android:contentDescription="@string/high3header"
+					android:background="#f78d00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high3"
+                	android:nextFocusRight="@+id/high3" />  	
+				<TextView
+					android:id="@+id/high3"
+					style="@style/TipBox"
+					android:text="@string/high3"
+					android:contentDescription="@string/high3"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high4header"
+                	android:nextFocusRight="@+id/high4header" />  
+					<ImageView
+					android:id="@+id/high3_img"
+					android:src="@drawable/img2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+	
+				<!-- high 4 -->
+				<TextView
+					android:id="@+id/high4header"
+					style="@style/TipBox"
+					android:text="@string/high4header"
+					android:contentDescription="@string/high4header"
+					android:background="#f78d00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high4"
+                	android:nextFocusRight="@+id/high4" /> 
+				<TextView
+					android:id="@+id/high4"
+					style="@style/TipBox"
+					android:text="@string/high4"
+					android:contentDescription="@string/high4"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high5header"
+                	android:nextFocusRight="@+id/high5header" /> 
+				<ImageView
+					android:id="@+id/high4_img"
+					android:src="@drawable/img7"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+
+				<!-- high 5 -->
+				<TextView
+					android:id="@+id/high5header"
+					style="@style/TipBox"
+					android:text="@string/high5header"
+					android:contentDescription="@string/high5header"
+					android:background="#f78d00"
+					android:focusable="true"
+					android:nextFocusDown="@+id/high5"
+                	android:nextFocusRight="@+id/high5" />  
+				<TextView
+					android:id="@+id/high5"
+					style="@style/TipBox"
+					android:text="@string/high5"
+					android:contentDescription="@string/high5"
+					android:focusable="true"
+					android:nextFocusDown="@+id/home_button"
+                	android:nextFocusRight="@+id/home_button" />  
+				<ImageView
+					android:id="@+id/high5_img"
+					android:src="@drawable/img3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+				</LinearLayout>
+							
+				<!-- Very High -->
+				<LinearLayout
+					android:id="@+id/VeryHigh"
+					android:orientation="vertical"  
+					android:layout_width="fill_parent"  
+					android:layout_height="wrap_content">
+				<TextView
+					android:id="@+id/VeryHighIntro"
+					android:layout_width="wrap_content"  
+					android:layout_height="wrap_content"
+					android:text="@string/VeryHighIntro"
+					android:contentDescription="@string/VeryHighIntro"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh1header"
+                	android:nextFocusRight="@+id/veryhigh1header" />  
+					
+				<!-- veryhigh 1 -->
+				<TextView
+					android:id="@+id/veryhigh1header"
+					style="@style/TipBox"
+					android:text="@string/veryhigh1header"
+					android:contentDescription="@string/veryhigh1header"
+					android:background="#FF0000"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh1"
+                	android:nextFocusRight="@+id/veryhigh1" />  
+				<TextView
+					android:id="@+id/veryhigh1"
+					style="@style/TipBox"
+					android:text="@string/veryhigh1"
+					android:contentDescription="@string/veryhigh1"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh2header"
+                	android:nextFocusRight="@+id/veryhigh2header" />  
+					<ImageView
+					android:id="@+id/veryhigh1_img"
+					android:src="@drawable/img8"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+					
+				<!-- veryhigh 2 -->
+				<TextView
+					android:id="@+id/veryhigh2header"
+					style="@style/TipBox"
+					android:text="@string/veryhigh2header"
+					android:contentDescription="@string/veryhigh2header"
+					android:background="#FF0000"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh2"
+                	android:nextFocusRight="@+id/veryhigh2" /> 
+				<TextView
+					android:id="@+id/veryhigh2"
+					style="@style/TipBox"
+					android:text="@string/veryhigh2"
+					android:contentDescription="@string/veryhigh2"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh3header"
+                	android:nextFocusRight="@+id/veryhigh3header" />  
+					<ImageView
+					android:id="@+id/veryhigh2_img"
+					android:src="@drawable/img9"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+
+				<!-- veryhigh 3 -->
+				<TextView
+					android:id="@+id/veryhigh3header"
+					style="@style/TipBox"
+					android:text="@string/veryhigh3header"
+					android:contentDescription="@string/veryhigh3header"
+					android:background="#FF0000"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh3"
+                	android:nextFocusRight="@+id/veryhigh3" /> 
+				<TextView
+					android:id="@+id/veryhigh3"
+					style="@style/TipBox"
+					android:text="@string/veryhigh3"
+					android:contentDescription="@string/veryhigh3" 
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh4header"
+                	android:nextFocusRight="@+id/veryhigh4header" />  
+					<ImageView
+					android:id="@+id/veryhigh3_img"
+					android:src="@drawable/img2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />	
+		
+				<!-- veryhigh 4 -->
+				<TextView
+					android:id="@+id/veryhigh4header"
+					style="@style/TipBox"
+					android:text="@string/veryhigh4header"
+					android:contentDescription="@string/veryhigh4header"
+					android:background="#FF0000"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh4"
+                	android:nextFocusRight="@+id/veryhigh4" /> 
+				<TextView
+					android:id="@+id/veryhigh4"
+					style="@style/TipBox"
+					android:text="@string/veryhigh4"
+					android:contentDescription="@string/veryhigh4"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh5header"
+                	android:nextFocusRight="@+id/veryhigh5header" /> 
+					<ImageView
+					android:id="@+id/veryhigh4_img"
+					android:src="@drawable/img7"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+							
+				<!-- veryhigh 5 -->
+				<TextView
+					android:id="@+id/veryhigh5header"
+					style="@style/TipBox"
+					android:text="@string/veryhigh5header"
+					android:contentDescription="@string/veryhigh5header"
+					android:background="#FF0000"
+					android:focusable="true"
+					android:nextFocusDown="@+id/veryhigh5"
+                	android:nextFocusRight="@+id/veryhigh5" /> 
+				<TextView
+					android:id="@+id/veryhigh5"
+					style="@style/TipBox"
+					android:text="@string/veryhigh5"
+					android:contentDescription="@string/veryhigh5" /> 
+					<ImageView
+					android:id="@+id/veryhigh5_img"
+					android:src="@drawable/img3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="" />
+				</LinearLayout>									
+			</LinearLayout>  	    
+		</ScrollView>
+    	
+	</LinearLayout>
+    
+    <!-- Bottom Menu Bar -->
+	<LinearLayout 
+	    	android:background="@drawable/bottom_menu_bg"
+			android:gravity="bottom"
+	    	android:layout_height="45dp"
+	    	android:layout_width="fill_parent"	
+	    	android:layout_alignParentBottom="true">
+	        	<Button 
+	            	android:text="@string/btnBottomMenuHome"
+					android:contentDescription="@string/btnBottomMenuHome" 
+	                android:id="@+id/home_button" 
+	                android:background="@drawable/bottom_menu_btn"
+	                style="@style/BottomMenuBtn" />
+	            <Button 
+	            	android:text="@string/btnBottomMenuBack"
+					android:contentDescription="@string/btnBottomMenuBack" 
+	                android:id="@+id/back_button" 
+	                android:background="@drawable/bottom_menu_btn"
+	                style="@style/BottomMenuBtn" />
+	            <Button 
+	            	android:text="@string/btnBottomMenuMainmenu"
+					android:contentDescription="@string/btnBottomMenuMainmenu"  
+	            	android:id="@+id/main_button" 
+	            	android:background="@drawable/bottom_menu_btn"
+	            	style="@style/BottomMenuBtn" />
+	</LinearLayout>
+	<!-- /End Bottom Menu Bar -->
+    		
+</RelativeLayout>

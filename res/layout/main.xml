@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff">
+    
+    <!-- prevent initial focus on edittext -->
+    <LinearLayout 
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="0px"
+    android:layout_height="0px" />
+ 
+    <!-- Application Title -->
+    <LinearLayout
+    	android:orientation="horizontal"
+        android:id="@+id/heatindextitle"
+        android:background="@drawable/heatindextitle"
+        style="@style/AppTitleContainer" 
+        android:layout_alignParentTop="true">
+        <ImageView 
+        	android:layout_height="20dp"
+			android:layout_width="69dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginLeft="10dp"
+			android:src="@drawable/osha" 
+			android:contentDescription="osha" />
+		<TextView
+			android:id="@+id/AppTitle"
+	        android:text="@string/txtAppTitle"
+			style="@style/AppTitle"
+			android:contentDescription="@string/txtAppTitle" />
+	    <ImageView   
+        	android:layout_height="35dp"
+			android:layout_width="36dp"
+			android:layout_marginLeft="10dp"
+			android:src="@drawable/dol" 
+			android:contentDescription="" />
+    </LinearLayout>   
+    <!-- /End Application Title -->
+    
+    <ScrollView 
+    	android:layout_marginBottom="50dp" 
+    	android:layout_below="@id/heatindextitle" 
+    	android:id="@+id/ScrollView01" 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="fill_parent" 
+    	android:isScrollContainer="true"> <!-- This makes the main area scrollable -->
+    	
+    <!-- Everything Between Title and Bottom Menu Bar -->
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="50dp"
+      android:padding="10dp">
+    
+	    <LinearLayout
+			style="@style/ActionBtnsArea"
+			android:orientation="horizontal">
+	      	<Button 
+                   android:id="@+id/current_submit"
+                   android:background="@drawable/home_btn"
+                   style="@style/ActionBtn"
+                   android:text="@string/btnCurrent"
+                   android:contentDescription="@string/btnCurrent"
+                   android:focusable="true"
+                   android:nextFocusDown="@+id/max_submit"
+			       android:nextFocusRight="@+id/max_submit" >
+            </Button>
+
+	   		<Button 
+	   			android:id="@+id/max_submit"
+	   			android:background="@drawable/home_btn"
+	   			style="@style/ActionBtn"
+	   			android:text="@string/btnDayMax"
+				android:contentDescription="@string/btnDayMax" 
+			    android:focusable="true"
+			    android:nextFocusDown="@+id/enter"
+			    android:nextFocusRight="@+id/enter"
+			    android:nextFocusLeft="@+id/current_submit"
+			    android:nextFocusUp="@+id/current_submit" />
+	   	</LinearLayout>
+	   	
+	   	   	<TextView
+	   	   		android:id="@+id/enter"  
+		    	android:layout_width="fill_parent" 
+		    	android:layout_height="wrap_content"
+		    	android:textSize="16sp"  
+		    	android:text="  Or Enter Numbers:"
+		    	android:contentDescription="Or Enter Numbers" 
+		    	android:focusable="true" 
+		    	android:nextFocusDown="@+id/temperature"
+			    android:nextFocusRight="@+id/temperature"
+			    android:nextFocusLeft="@+id/max_submit"
+			    android:nextFocusUp="@+id/max_submit" />
+   		
+   	<!-- User Input Area -->
+   	<LinearLayout
+   		android:orientation="vertical"
+   		android:layout_width="wrap_content"
+   		android:layout_height="wrap_content"
+   		android:background="@drawable/shape_borders">				
+	<TableLayout 
+		android:id="@+id/TableLayoutHome" 
+		style="@style/UserInputArea">
+		<TableRow 
+			android:id="@+id/TableRow01" 
+		  	android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content">
+		<!-- temp -->
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="wrap_content">
+			<TextView 
+		    	android:id="@+id/temperature" 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="wrap_content"  
+		    	android:text="@string/txtTemperature"
+		    	android:contentDescription="Enter Temperature"
+		    	android:focusable="true"
+	    		android:nextFocusDown="@+id/edit_input_temp"
+			    android:nextFocusRight="@+id/edit_input_temp"
+			    android:nextFocusLeft="@+id/enter"
+			    android:nextFocusUp="@+id/enter" />
+		<LinearLayout
+   			android:layout_width="wrap_content"
+   			android:layout_height="wrap_content">
+			<EditText
+				android:inputType="numberDecimal"
+				android:id="@+id/edit_input_temp"
+	    		style="@style/InputTempHumid"
+	    		android:focusable="true"
+	    		android:nextFocusDown="@+id/farenheit"
+			    android:nextFocusRight="@+id/farenheit"
+			    android:nextFocusLeft="@+id/temperature"
+			    android:nextFocusUp="@+id/temperature" />
+		    <TextView 
+		    	android:id="@+id/farenheit" 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="wrap_content" 
+		    	android:text="@string/txtF"
+				android:contentDescription="degrees farenheit"
+				android:focusable="true"
+				android:nextFocusDown="@+id/humidity"
+			    android:nextFocusRight="@+id/humidity"
+			    android:nextFocusLeft="@+id/edit_input_temp"
+			    android:nextFocusUp="@+id/edit_input_temp" />
+		 </LinearLayout>
+		</LinearLayout>
+
+		<!-- humidity -->
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="wrap_content"
+			android:layout_marginRight="5dp">
+			<TextView 
+		    	android:id="@+id/humidity" 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="wrap_content"
+		    	android:text="@string/txtHumidity"
+				android:contentDescription="Enter Humidity"
+		    	android:focusable="true"
+	    		android:nextFocusDown="@+id/edit_input_humid"
+			    android:nextFocusRight="@+id/edit_input_humid"
+			    android:nextFocusLeft="@+id/farenheit"
+			    android:nextFocusUp="@+id/farenheit"  />
+		<LinearLayout
+   			android:layout_width="wrap_content"
+   			android:layout_height="wrap_content">
+   			<EditText 
+	    		android:inputType="numberDecimal"
+	    		android:id="@+id/edit_input_humid"
+	    		style="@style/InputTempHumid"
+	    	    android:focusable="true"
+	    	    android:nextFocusDown="@+id/percent"
+			    android:nextFocusRight="@+id/percent"
+				android:nextFocusLeft="@+id/humidity"
+			    android:nextFocusUp="@+id/humidity" />
+		    <TextView 
+		    	android:id="@+id/percent" 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="wrap_content" 
+		    	android:text="@string/txtPercentage"
+				android:contentDescription="@string/txtPercentage"
+			    android:focusable="true"
+			    android:nextFocusDown="@+id/cmd_submit"
+			    android:nextFocusRight="@+id/cmd_submit"
+			    android:nextFocusLeft="@+id/edit_input_humid"
+			    android:nextFocusUp="@+id/edit_input_humid" />		
+		</LinearLayout>	
+		</LinearLayout>
+
+		<!-- calculate -->
+		<LinearLayout
+				style="@style/ActionBtnsArea"
+				android:layout_marginTop="24dp"
+				android:layout_marginLeft="3dp">						
+   			<Button 
+   				android:padding="5dp"
+   				android:id="@+id/cmd_submit"
+   				android:background="@drawable/calc_btn"
+   				style="@style/ActionBtn"
+   				android:text="@string/btnCalc"
+				android:contentDescription="@string/btnCalc"
+				android:focusable="true"
+				android:nextFocusDown="@+id/heatindex"
+			    android:nextFocusRight="@+id/heatindex"
+			    android:nextFocusLeft="@+id/percent"
+			    android:nextFocusUp="@+id/percent" />
+		</LinearLayout>
+ 		</TableRow>	
+	</TableLayout>
+    </LinearLayout><!-- /End User Input Area -->
+    
+    <!--  results -->
+     <LinearLayout
+      style="@style/ShowResultsArea">
+	
+      	<!--  heat index -->
+    	<LinearLayout
+      		android:background="@drawable/calc_result_heatindex"
+      		style="@style/Results"> 
+      		<LinearLayout
+      		android:orientation="horizontal"
+      		android:layout_height="wrap_content"
+			android:layout_width="wrap_content"> 	
+   			<TextView
+   				android:id="@+id/heatindex"
+       			android:text="@string/txtHeatIndex"
+				android:contentDescription="@string/txtHeatIndex"
+       			android:layout_width="85dp"
+       			android:layout_height="wrap_content"
+       			android:focusable="true"
+       			android:nextFocusDown="@+id/hi_result"
+			    android:nextFocusRight="@+id/hi_result"
+			    android:nextFocusLeft="@+id/cmd_submit"
+			    android:nextFocusUp="@+id/cmd_submit" />  		
+     		<TextView  
+	    		android:id="@+id/hi_result"
+	    		android:layout_height="wrap_content"
+	    		android:singleLine="true"
+	    		android:textSize="24sp"
+	    		android:layout_width="177dp" 	
+	    		android:gravity="center"
+	    		android:background="#ffdcdcdc"
+	    		android:focusable="true"
+	    		android:nextFocusDown="@+id/time_result"
+			    android:nextFocusRight="@+id/time_result"
+			    android:nextFocusLeft="@+id/heatindex"
+			    android:nextFocusUp="@+id/heatindex" />  
+	    	</LinearLayout>
+	   	<!-- time -->
+     	<LinearLayout
+     		android:id="@+id/daymaxblock"
+     		android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:orientation="horizontal">
+			<TextView
+       			android:text=""
+       			android:layout_width="85dp"
+       			android:layout_height="wrap_content" /> 		  	
+   			<LinearLayout
+     		android:layout_height="wrap_content"
+			android:layout_width="177dp"
+			android:orientation="horizontal">
+			<LinearLayout
+     		android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:orientation="horizontal"
+			android:gravity="center">
+			<!-- <TextView
+   				android:id="@+id/noaatime"
+       			android:layout_width="wrap_content"
+       			android:textSize="14sp"
+       			android:layout_height="wrap_content"
+       		    android:focusable="true"
+       		    android:nextFocusDown="@+id/time_result"
+			    android:nextFocusRight="@+id/time_result"
+			    android:nextFocusLeft="@+id/hi_result"
+			    android:nextFocusUp="@+id/hi_result" />--><!-- removed android:text="@string/txtTime" android:contentDescription="@string/txtTime" -->
+     		<TextView  
+	    		android:id="@+id/time_result"
+	    		android:layout_width="wrap_content" 
+	    		android:layout_height="wrap_content"
+	    		android:singleLine="true"
+	    		android:textSize="14sp"
+	    		android:paddingTop="2dp"
+	    		android:paddingBottom="2dp"
+	    		android:paddingLeft="5dp"
+	    		android:gravity="left"
+	    	    android:focusable="true"
+	    	    android:nextFocusDown="@+id/risklevel"
+			    android:nextFocusRight="@+id/risklevel"
+			    android:nextFocusLeft="@+id/hi_result"
+			    android:nextFocusUp="@+id/hi_result" /> 
+	    		</LinearLayout>
+	    	</LinearLayout>
+		</LinearLayout>
+		
+   		</LinearLayout>
+   				
+   		<!--  risk level -->
+   		<LinearLayout
+     		android:background="@drawable/calc_result_risklevel"
+     		style="@style/Results">
+     		<LinearLayout
+      		android:orientation="horizontal"
+      		android:layout_height="wrap_content"
+			android:layout_width="wrap_content"> 	
+   			<TextView
+   				android:id="@+id/risklevel"
+       			android:text="@string/txtRiskLvl"
+				android:contentDescription="@string/txtRiskLvl"
+       			android:layout_width="85dp"
+       			android:layout_height="wrap_content"
+       			android:focusable="true"
+       			android:nextFocusDown="@+id/risk_result"
+			    android:nextFocusRight="@+id/risk_result"
+			    android:nextFocusLeft="@+id/time_result"
+			    android:nextFocusUp="@+id/time_result" />
+     		<TextView  
+	    		android:id="@+id/risk_result"
+	    		android:layout_width="177dp" 
+	    		android:layout_height="wrap_content"
+	    		android:singleLine="true"
+	    		android:gravity="center"
+	    		android:paddingTop="4dp"
+	    		android:paddingBottom="4dp"
+	    		android:textSize="14sp"
+	    		android:background="#dcdcdc"
+	    	    android:focusable="true"
+	    	    android:nextFocusDown="@+id/cmd_supervisor"
+			    android:nextFocusRight="@+id/cmd_supervisor"
+			    android:nextFocusLeft="@+id/risklevel"
+			    android:nextFocusUp="@+id/risklevel"  />	
+	    	</LinearLayout>
+	    </LinearLayout>
+      	
+      	<LinearLayout 
+			style="@style/Results"  
+			android:background="@drawable/calc_result_risklevel">
+     	    <LinearLayout
+      		android:orientation="horizontal"
+      		android:layout_height="wrap_content"
+			android:layout_width="fill_parent"> 	
+			<TextView
+       			android:text=""
+       			android:layout_width="83dp"
+       			android:layout_height="wrap_content" />  
+			<!-- precautions-->
+	    		<Button 
+	    		android:id="@+id/cmd_supervisor"
+				android:layout_width="175dp"			
+	    		android:text="@string/txtPrecautions"
+				android:contentDescription="@string/txtPrecautions"
+	    		android:gravity="center"
+	    		style="@style/Precautions_btn"
+	    		android:focusable="true"
+	    		android:nextFocusLeft="@+id/risk_result"
+			    android:nextFocusUp="@+id/risk_result" 
+			    android:nextFocusDown="@+id/home_button"
+			    android:nextFocusRight="@+id/home_button" />	
+	    	</LinearLayout> 
+	    	<!-- 
+	    	<TextView  
+	    		android:id="@+id/testplace"
+	    		android:text="test"
+	    		android:layout_width="fill_parent" 
+	    		android:layout_height="wrap_content"
+	    		/>
+	    	-->
+	    		
+	    		       				
+      	</LinearLayout>
+    	 
+    </LinearLayout>
+    <!-- /End Show Results Area -->
+
+    
+	</LinearLayout>
+	<!-- /End Everything Between Title and Bottom Menu Bar -->
+	
+	</ScrollView>
+	
+	<!-- Bottom Menu Bar -->
+	<LinearLayout 
+	    	android:background="@drawable/bottom_menu_bg"
+			android:gravity="bottom"
+	    	android:layout_height="45dp"
+	    	android:layout_width="fill_parent"	
+	    	android:layout_alignParentBottom="true">
+	        	<Button 
+	            	android:text="@string/btnBottomMenuHome" 
+					android:contentDescription="@string/btnBottomMenuHome"
+	                android:id="@+id/home_button" 
+	                android:background="@drawable/bottom_menu_btn"
+	                style="@style/BottomMenuBtn" />	   
+	            <Button 
+	            	android:text="@string/btnBottomMenuMainmenu" 
+					android:contentDescription="@string/btnBottomMenuMainmenu"
+	            	android:id="@+id/main_button" 
+	            	android:background="@drawable/bottom_menu_btn"
+	            	style="@style/BottomMenuBtn" />	
+	</LinearLayout>
+	<!-- /End Bottom Menu Bar -->
+		
+</RelativeLayout> 
+<!-- /End Root Layout -->

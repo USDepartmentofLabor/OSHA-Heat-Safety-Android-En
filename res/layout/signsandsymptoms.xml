@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff">
+    
+    <!-- Application Title -->
+    <LinearLayout
+    	android:orientation="horizontal"
+        android:id="@+id/heatindextitle"
+        android:background="@drawable/heatindextitle"
+        style="@style/AppTitleContainer" 
+        android:layout_alignParentTop="true">
+        <ImageView   
+			android:layout_height="20dp"
+			android:layout_width="69dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginLeft="10dp"
+			android:src="@drawable/osha"
+			android:contentDescription="osha" />
+		<TextView
+			android:id="@+id/AppTitle"
+	        android:text="@string/txtAppTitle"
+			android:contentDescription="@string/txtAppTitle"
+	        style="@style/AppTitle" />
+	    <ImageView   
+        	android:layout_height="35dp"
+			android:layout_width="68.9655172dp"
+			android:layout_marginLeft="10dp"
+			android:src="@drawable/dol"
+			android:contentDescription="" />
+    </LinearLayout>
+    <!-- /End Application Title -->
+    
+    <!-- Everything Between Title and Bottom Menu Bar -->
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:padding="10dp">
+      
+	<!--  Page title -->   
+	<TextView  
+	    android:id="@+id/titletxt"
+	    style="@style/TitleBox"
+	    android:layout_marginTop="30dp"
+	    android:layout_marginBottom="10dp"
+	    android:focusable="true" 
+	    android:nextFocusDown="@+id/group1text"
+	    android:nextFocusRight="@+id/group1text" /> 
+		
+		<!--  header row -->
+    		<LinearLayout android:orientation="horizontal"
+    			android:layout_width="wrap_content"  
+				android:layout_height="wrap_content">	
+				<TableLayout
+        			android:layout_width="wrap_content"
+        			android:layout_height="wrap_content">
+        			<TableRow>    	
+        				<TextView
+            			android:id="@+id/header1text"
+                		android:layout_column="1"
+                		android:layout_width="115dp"
+                		android:textStyle="bold"
+                		android:text="Illness"
+                		android:contentDescription=""
+                		android:focusable="false" />
+            			<TextView
+            			android:id="@+id/header2text"
+                		android:layout_column="2"
+                		android:textStyle="bold"
+                		android:text="Symptoms"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+        		</TableLayout>
+          	</LinearLayout>      		
+          		<!--  hr --><View style="@style/hrBlack" />
+          		<!--  end header row -->  				
+
+			<ScrollView 
+	    	android:layout_marginBottom="50dp" 
+	    	android:id="@+id/infotips"  
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content" 
+	    	android:isScrollContainer="true"> <!-- This makes the main area scrollable -->		
+						
+				<LinearLayout android:orientation="vertical"
+				android:layout_width="wrap_content"  
+				android:layout_height="wrap_content">
+				
+				<!--  row 1 -->
+    			<LinearLayout android:orientation="horizontal"
+    			android:layout_width="wrap_content"  
+				android:layout_height="wrap_content">
+				<!--  col header 1 -->
+        		<LinearLayout android:orientation="vertical" 
+        		android:layout_width="wrap_content"  
+				android:layout_height="wrap_content"
+				android:gravity="left" >
+            		<TextView
+            		android:id="@+id/group1text"
+					android:layout_width="110dp"
+					android:layout_height="wrap_content"
+					android:paddingRight="5dp"
+					android:textStyle="bold"
+					android:text="Heat stroke"
+					android:contentDescription="@string/signs_heat_stroke"
+					android:focusable="true"
+					android:nextFocusRight="@+id/group2text"
+                	android:nextFocusDown="@+id/group2text"
+                	android:nextFocusUp="@+id/titletxt"
+	        		android:nextFocusLeft="@+id/titletxt" />
+					<!--  Heat stroke button -->
+ 					<LinearLayout 
+	    				android:layout_height="40dp"
+	    				android:layout_width="110dp">
+	    				<Button 
+	       					android:text="@string/firstaid"
+	       					android:id="@+id/signs_button1" 
+	        				style="@style/InfoBtn"
+	        				android:focusable="false"
+	        				android:contentDescription="" />
+	        			
+	       			</LinearLayout><!--  end button -->
+	       			<ImageView   
+	       				android:layout_width="wrap_content"  
+						android:layout_height="wrap_content"
+						android:src="@drawable/heatstroke"
+						android:contentDescription="" />
+        		</LinearLayout>
+        		
+        		<LinearLayout android:orientation="vertical"
+        		android:layout_width="fill_parent"  
+				android:layout_height="wrap_content"
+				android:gravity="left">
+            	
+            	<!--  row 1 infotext -->
+            	<TableLayout
+            		android:id="@+id/table1"
+        			android:layout_width="fill_parent"
+        			android:layout_height="wrap_content"
+        			android:shrinkColumns="2">
+        			<TableRow
+        			android:id="@+id/info11row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info11text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 1 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info12row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info12text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 2 text"
+						android:contentDescription=""
+						android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info13row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info13text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 3 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow> 
+        			<TableRow
+        			android:id="@+id/info14row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info14text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 4 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow> 
+        			<TableRow
+        			android:id="@+id/info15row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info15text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 5 text"
+						android:contentDescription=""
+						android:focusable="false" />
+        			</TableRow> 
+  
+  				</TableLayout>  		
+        		</LinearLayout>
+          		</LinearLayout>
+               	<!--  end row 1 -->  		
+               		     		
+          		<!--  hr --><View style="@style/hrGrey" />
+				
+				<!--  row 2 -->
+    			<LinearLayout android:orientation="horizontal"
+    			android:layout_width="wrap_content"  
+				android:layout_height="wrap_content">
+				<!--  col header 2 -->
+        		<LinearLayout android:orientation="vertical" 
+        		android:layout_width="wrap_content"  
+				android:layout_height="wrap_content"
+				android:gravity="left">
+            		<TextView
+            		android:id="@+id/group2text"
+					android:layout_width="110dp"
+					android:layout_height="wrap_content"
+					android:paddingRight="5dp"
+					android:textStyle="bold"
+					android:text="Heat exhaustion"
+					android:contentDescription="@string/signs_heat_exhaustion"
+					android:focusable="true"
+					android:nextFocusDown="@+id/group4text"
+					android:nextFocusRight="@+id/group4text"
+					android:nextFocusUp="@+id/group2text"
+	        		android:nextFocusLeft="@+id/group2text" />
+					<!--  Heat exhaustion button -->
+ 					<LinearLayout 
+	    				android:layout_height="40dp"
+	    				android:layout_width="110dp">
+	    				<Button 
+	       					android:text="@string/firstaid" 
+	       					android:id="@+id/signs_button2" 
+	        				style="@style/InfoBtn"
+	        				android:focusable="false" />
+	       			</LinearLayout><!--  end button -->
+	       			<ImageView   
+	       				android:layout_width="wrap_content"  
+						android:layout_height="wrap_content"
+						android:src="@drawable/heatexhaustion"
+						android:contentDescription="" />
+        		</LinearLayout>
+        		
+        		<LinearLayout android:orientation="vertical"
+        		android:layout_width="fill_parent"  
+				android:layout_height="wrap_content"
+				android:gravity="left"
+				android:layout_marginRight="10dip">
+            	
+            	<!--  row 2 infotext -->
+            	<TableLayout
+            		android:id="@+id/table2"
+        			android:layout_width="fill_parent"
+        			android:layout_height="wrap_content"
+        			android:shrinkColumns="2">
+        			<TableRow
+        			android:id="@+id/info21row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info21text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 1 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info22row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info22text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 2 text"
+						android:contentDescription=""
+						android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info23row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info23text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 3 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow> 
+        			<TableRow
+        			android:id="@+id/info24row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info24text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 4 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow> 
+        			<TableRow
+        			android:id="@+id/info25row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info25text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 5 text"
+						android:contentDescription=""
+						android:focusable="false" />
+        			</TableRow> 
+        			<TableRow
+        			android:id="@+id/info26row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info26text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 6 text"
+						android:contentDescription=""
+						android:focusable="false" />
+        			</TableRow> 
+        			<TableRow
+        			android:id="@+id/info27row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info27text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 7 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow> 
+        			<TableRow
+        			android:id="@+id/info28row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info28text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 8 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info29row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info29text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 9 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info210row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info210text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 10 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+  				</TableLayout>  		
+        		</LinearLayout>
+          		</LinearLayout>
+          	<!--  end row 2 --> 
+          		
+          	<!--  hr --><View style="@style/hrGrey" />
+ 
+
+				<!--  row 4 -->
+    			<LinearLayout android:orientation="horizontal"
+    			android:layout_width="wrap_content"  
+				android:layout_height="wrap_content">
+				<!--  col header 4 -->
+        		<LinearLayout android:orientation="vertical" 
+        		android:layout_width="wrap_content"  
+				android:layout_height="wrap_content"
+				android:gravity="left">
+            		<TextView
+            		android:id="@+id/group4text"
+					android:layout_width="110dp"
+					android:layout_height="wrap_content"
+					android:paddingRight="5dp"
+					android:textStyle="bold"
+					android:text="Heat cramps"
+					android:contentDescription="@string/signs_heat_cramps"
+					android:focusable="true"
+					android:nextFocusUp="@+id/group2text"
+					android:nextFocusLeft="@+id/group2text"
+					android:nextFocusDown="@+id/group5text"
+					android:nextFocusRight="@+id/group5text" />
+					<!--  Heat cramps button -->
+ 					<LinearLayout 
+	    				android:layout_height="40dp"
+	    				android:layout_width="110dp">
+	    				<Button 
+	       					android:text="@string/firstaid"
+	       					android:id="@+id/signs_button4" 
+	        				style="@style/InfoBtn"
+	        				android:focusable="false" />
+	       			</LinearLayout><!--  end button -->
+	       			<ImageView   
+	       				android:layout_width="wrap_content"  
+						android:layout_height="wrap_content"
+						android:src="@drawable/heatcramps"
+						android:contentDescription="" />
+        		</LinearLayout>
+        		
+        		<LinearLayout android:orientation="vertical"
+        		android:layout_width="fill_parent"  
+				android:layout_height="wrap_content"
+				android:gravity="left"
+				android:layout_marginRight="10dip">
+            	
+            	<!--  row 4 infotext -->
+            	<TableLayout
+            		android:id="@+id/table4"
+        			android:layout_width="fill_parent"
+        			android:layout_height="wrap_content"
+        			android:shrinkColumns="2">
+        			<TableRow
+        			android:id="@+id/info41row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info41text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 1 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info42row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info42text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 2 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info43row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info43text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 3 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>  
+  				</TableLayout>  		
+        		</LinearLayout>
+          		</LinearLayout>
+          		<!--  end row 4 -->  		
+          		
+          		<!--  hr --><View style="@style/hrGrey" />
+
+				<!--  row 5 -->
+    			<LinearLayout android:orientation="horizontal"
+    			android:layout_width="fill_parent"  
+				android:layout_height="wrap_content">
+				<!--  col header 5 -->
+        		<LinearLayout android:orientation="vertical" 
+        		android:layout_width="wrap_content"  
+				android:layout_height="wrap_content"
+				android:gravity="left">
+            		<TextView
+            		android:id="@+id/group5text"
+					android:layout_width="110dp"
+					android:layout_height="wrap_content"
+					android:paddingRight="5dp"
+					android:textStyle="bold"
+					android:text="Heat rash"
+					android:contentDescription="@string/signs_heat_rash"
+					android:focusable="true"
+					android:nextFocusUp="@+id/group4text"
+					android:nextFocusLeft="@+id/group4text"
+					android:nextFocusDown="@+id/home_button"
+					android:nextFocusRight="@+id/home_button" />
+        		
+        		<!--  Heat rash button -->
+ 					<LinearLayout 
+	    				android:layout_height="40dp"
+	    				android:layout_width="110dp">
+	    				<Button 
+	       					android:text="@string/firstaid"
+	       					android:id="@+id/signs_button5" 
+	        				style="@style/InfoBtn"
+	        				android:focusable="false" />
+	       			</LinearLayout><!--  end button -->
+	       			<ImageView   
+	       				android:layout_width="100px"  
+						android:layout_height="wrap_content"
+	       				android:contentDescription="" />
+	       			</LinearLayout>
+        		
+        		<LinearLayout android:orientation="vertical"
+        		android:layout_width="fill_parent"  
+				android:layout_height="wrap_content"
+				android:gravity="left"
+				android:layout_marginRight="10dip">
+            	
+            	<!--  row 5 infotext -->
+            	<TableLayout
+            		android:id="@+id/table5"
+        			android:layout_width="wrap_content"
+        			android:layout_height="wrap_content"
+        			android:shrinkColumns="2">
+        			<TableRow
+        			android:id="@+id/info51row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info51text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 1 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+        			<TableRow
+        			android:id="@+id/info52row">    
+            			<TextView
+                		android:layout_column="1"
+                		android:text="• "></TextView>
+            			<TextView
+            			android:id="@+id/info52text"
+                		android:layout_column="2"
+                		android:layout_width="wrap_content"
+                		android:text="Symptom 2 text"
+                		android:contentDescription=""
+                		android:focusable="false" />
+        			</TableRow>
+  				</TableLayout> 
+        		</LinearLayout>
+          		</LinearLayout>
+          		<!--  end row 5 -->  		
+
+	    </LinearLayout>
+		</ScrollView>		
+	</LinearLayout>
+
+	<!-- Bottom Menu Bar -->
+	<LinearLayout 
+	    	android:background="@drawable/bottom_menu_bg"
+			android:gravity="bottom"
+	    	android:layout_height="45dp"
+	    	android:layout_width="fill_parent"	
+	    	android:layout_alignParentBottom="true">
+	        	<Button 
+	            	android:text="@string/btnBottomMenuHome" 
+					android:contentDescription="@string/btnBottomMenuHome"
+	                android:id="@+id/home_button" 
+	                android:background="@drawable/bottom_menu_btn"
+	                style="@style/BottomMenuBtn" />
+	            <Button 
+	            	android:text="@string/btnBottomMenuBack" 
+					android:contentDescription="@string/btnBottomMenuBack"
+	                android:id="@+id/back_button" 
+	                android:background="@drawable/bottom_menu_btn"
+	                style="@style/BottomMenuBtn" />
+	            <Button 
+	            	android:text="@string/btnBottomMenuMainmenu"
+					android:contentDescription="@string/btnBottomMenuMainmenu" 
+	            	android:id="@+id/main_button" 
+	            	android:background="@drawable/bottom_menu_btn"
+	            	style="@style/BottomMenuBtn" />
+	</LinearLayout>
+	<!-- /End Bottom Menu Bar -->
+</RelativeLayout>
