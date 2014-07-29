@@ -14,4 +14,4 @@ For more information about safety while working in the heat, see OSHA's heat ill
 The NOAA webservice endpoint was removed at their request.  You will need to replace this.
 
 #### Reusable Code
-If you want to repurpose the heat index calculation code, please see the [Calculate Heat Index-Java](Calculate-Heat-Index-Java) repository.
+If you want to repurpose the heat index calculation code, please see the [Calculate Heat Index-Java](https://github.com/USDepartmentofLabor/Calculate-Heat-Index-Java) repository.
