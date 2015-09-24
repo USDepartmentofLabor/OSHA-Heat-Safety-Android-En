@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="app_name">Calor</string>
+        <string name="app_name_long">Índice de calor</string>
+        <string name="tempUnit">°F</string>
+        <string name="humidityUnit">%</string>
+        <string name="action_settings">Ajustes</string>
+        <string name="labelForNow">Ahora</string>
+        <string name="labelForMax">Máxima de hoy</string>
+        <string name="labelForCalculated">Calculado</string>
+        <string name="labelForFeelsLike">Se siente como</string>
+        <string name="txtForLowerRisk">Riesgo Bajo</string>
+        <string name="txtForModerateRisk">Riesgo Moderado</string>
+        <string name="txtForHighRisk">Riesgo Alto</string>
+        <string name="txtForVeryHightoExtremeRisk">Riesgo Extremo</string>
+        <string name="txtForCurrentMinimalRisk">Riesgo Mínimo</string>
+        <string name="txtForTitlePrecautions">Precauciones</string>
+        <string name="txtForTitleMoreInfo">Más Info</string>
+        <string name="txtForMoreInfoSigns">&#160;&#160;Señales y Síntomas</string>
+        <string name="txtForMoreInfoFirstAid">&#160;&#160;Primeros Auxilios</string>
+        <string name="txtForMoreInfoDetails">&#160;&#160;Más Detalles</string>
+        <string name="txtForMoreInfoContact">&#160;&#160;Contacte a la OSHA</string>
+        <string name="txtForMoreInfoAbout">&#160;&#160;Sobre la Aplicación</string>
+        <string name="txtTemperature">grados de Temperatura Farenheit</string>
+        <string name="txtHumidity">por ciento de Humedad</string>
+        <string name="txtForManualData">Datos Manuales</string>
+        <string name="location">Localización</string>
+        <string name="txtForAt">A</string>
+        <string name="done">Terminado</string>
+        <string name="dol">Departamento de Trabajo de EE.UU.</string>
+</resources>

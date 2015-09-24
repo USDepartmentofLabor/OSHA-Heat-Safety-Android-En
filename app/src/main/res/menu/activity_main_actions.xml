@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/action_menu"
+    >
+    <!--
+    <item android:id="@+id/action_home"
+        android:text="‹ Heat Index"
+        android:title="‹ Heat Index"
+        android:showAsAction="ifRoom" />
+        -->
+
+    <!--DOL logo-->
+    <item android:id="@+id/action_dol"
+        android:icon="@drawable/dol"
+        android:title="@string/dol"
+        android:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_done"
+        android:text="@string/done"
+        android:title="@string/done"
+        android:showAsAction="ifRoom"/>
+</menu>

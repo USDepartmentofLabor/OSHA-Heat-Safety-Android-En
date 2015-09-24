@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppBaseTheme" parent="@android:style/Theme.Holo.Light">
+        <!-- Customize your theme here. -->
+        <!--<item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:navigationBarColor">@color/primary_dark</item>-->
+    </style>
+
+
+    <style name="Theme.Main" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
+    </style>
+
+    <style name="Widget.ActionBar" parent="android:Widget.Holo.Light.ActionBar">
+        <item name="android:displayOptions">showHome|useLogo|showCustom</item>
+    </style>
+
+</resources>
