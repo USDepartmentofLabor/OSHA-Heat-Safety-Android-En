@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Heat</string>
+    <string name="app_name_long">Heat Index</string>
+    <string name="tempUnit">&#xb0;F</string>
+    <string name="humidityUnit">%</string>
+    <string name="action_settings">Settings</string>
+    <string name="labelForNow">Now</string>
+    <string name="labelForMax">Today\'s Max</string>
+    <string name="labelForCalculated">Calculated</string>
+    <string name="labelForFeelsLike">Feels Like </string>
+    <string name="txtForLowerRisk">Lower Risk\n(Use Caution)</string>
+    <string name="txtForModerateRisk">Moderate Risk</string>
+    <string name="txtForHighRisk">High Risk</string>
+    <string name="txtForVeryHightoExtremeRisk">Very High to\nExtreme Risk</string>
+    <string name="txtForCurrentMinimalRisk">Minimal Risk\nFrom Heat</string>
+    <string name="txtForTitlePrecautions">Precautions</string>
+    <string name="txtForTitleMoreInfo">More Info</string>
+    <string name="txtForMoreInfoSigns">&#160;&#160;Signs and Symptoms</string>
+    <string name="txtForMoreInfoFirstAid">&#160;&#160;First Aid</string>
+    <string name="txtForMoreInfoDetails">&#160;&#160;More Details</string>
+    <string name="txtForMoreInfoContact">&#160;&#160;Contact OSHA</string>
+    <string name="txtForMoreInfoAbout">&#160;&#160;About this App</string>
+    <string name="txtTemperature">degrees Fahrenheit Temperature</string>
+    <string name="txtHumidity">percent Humidity</string>
+
+    <string name="txtForManualData">Manual Data</string>
+    <string name="location">Location</string>
+    <string name="txtForAt">At</string>
+    <string name="done">Done</string>
+    <string name="dol">U.S. Department of Labor</string>
+</resources>

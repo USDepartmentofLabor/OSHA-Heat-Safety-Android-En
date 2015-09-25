@@ -1,0 +1,368 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainscreen"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+
+    <RelativeLayout
+        android:id="@+id/risk_result_big_background"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+
+    <RelativeLayout
+        android:id="@+id/geo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <ProgressBar  android:indeterminate="true"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/progressBar1"></ProgressBar>
+
+        <ImageButton
+            android:id="@+id/arrow3"
+            android:layout_width="30dp"
+            android:layout_height="24dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="@drawable/geo"
+            android:contentDescription="Get my location"
+            android:layout_toLeftOf="@+id/location"/>
+
+        <TextView
+            android:labelFor="@+id/location"
+            android:text="@string/location"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <EditText android:id="@+id/location"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/txtForManualData"
+            android:editable="true"
+            android:inputType="text"
+            android:imeOptions="actionGo"
+            />
+            <!--
+            android:drawableLeft="@drawable/geo"
+            android:drawableLeft="@drawable/geo"
+            android:layout_toRightOf="@+id/locationBtn"-->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/values"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp">
+
+        <TextView
+            android:labelFor="@+id/temp"
+            android:text="@string/txtTemperature"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <EditText
+            android:id="@+id/temp"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/temp"
+            android:hint="@string/txtTemperature"
+            android:contentDescription="@string/txtTemperature"
+            />
+
+        <TextView
+            android:id="@+id/tempUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/tempUnit"
+            android:contentDescription="@null"
+            android:textColor="#666666"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_toRightOf="@+id/temp"
+            />
+
+        <TextView
+            android:labelFor="@+id/humidity"
+            android:text="@string/txtHumidity"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <EditText
+            android:id="@+id/humidity"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:drawableLeft="@drawable/humidity"
+            android:hint="@string/txtHumidity"
+            android:contentDescription="@string/txtHumidity"/>
+
+        <TextView
+            android:id="@+id/humidityUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/humidityUnit"
+            android:contentDescription="@null"
+            android:textColor="#666666"
+            android:layout_centerVertical="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/currentResults"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/values">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculated | Now"
+        android:id="@+id/now"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="40dp"
+        android:textColor="#666666"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="28sp"
+        android:id="@+id/risk"
+        android:layout_below="@+id/now"
+        android:layout_marginTop="10dp"/>
+
+            <!--android:drawableRight="@drawable/chevron"
+            android:onClick="onClick"
+            android:clickable="true"-->
+
+            <ImageButton
+                android:id="@+id/arrow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_toRightOf="@+id/risk"
+                android:layout_below="@+id/now"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/chevron"
+                android:contentDescription="Precautions" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feels like 86&#xb0;F"
+        android:id="@+id/feelsLike"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/risk"
+        android:textColor="#666666"
+        android:layout_marginTop="10dp" />
+
+</RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/maxResults"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/currentResults">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/labelForMax"
+        android:id="@+id/max"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_centerHorizontal="true"
+        android:textColor="#666666"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:id="@+id/risk2"
+        android:layout_below="@+id/max"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+            <!-- android:drawableRight="@drawable/chevron"
+        android:onClick="onClick"
+        android:clickable="true"-->
+
+            <ImageButton
+                android:id="@+id/arrow2"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@null"
+                android:layout_toRightOf="@+id/risk2"
+                android:layout_below="@+id/max"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/chevron"
+                android:contentDescription="Precautions" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="At 4:00 PM"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/time"
+        android:layout_below="@+id/risk2"
+        android:layout_centerHorizontal="true"
+        android:textColor="#666666"
+        android:layout_marginTop="10dp" />
+</RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/info"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/info"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:contentDescription="More information"/>
+
+        <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/mywebview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        </WebView>
+
+    </RelativeLayout>
+
+
+    <!--second view-->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/moreinfoscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eee">
+
+
+        <RelativeLayout
+            android:id="@+id/moreinfocontainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/moreinfosigns"
+                android:drawableLeft="@drawable/moreinfosigns"
+                android:drawableRight="@drawable/rightarrow"
+                android:text="@string/txtForMoreInfoSigns"
+                android:onClick="myMoreInfoSignsClickHandler"
+                android:clickable="true"
+                android:layout_marginTop="30dp"
+                android:background="#fff"
+                android:padding="10dp"
+                android:gravity="left|center"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/moreinfofirstaid"
+                android:drawableLeft="@drawable/moreinfofirstaid"
+                android:drawableRight="@drawable/rightarrow"
+                android:text="@string/txtForMoreInfoFirstAid"
+                android:onClick="myMoreInfoFirstAidClickHandler"
+                android:clickable="true"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:padding="10dp"
+                android:gravity="left|center"
+                android:layout_below="@+id/moreinfosigns"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/moreinfodetails"
+                android:drawableLeft="@drawable/moreinfodetails"
+                android:drawableRight="@drawable/rightarrow"
+                android:text="@string/txtForMoreInfoDetails"
+                android:onClick="myMoreInfoDetailsClickHandler"
+                android:clickable="true"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:padding="10dp"
+                android:gravity="left|center"
+                android:layout_below="@+id/moreinfofirstaid"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/moreinfocontact"
+                android:drawableLeft="@drawable/moreinfocontact"
+                android:drawableRight="@drawable/rightarrow"
+                android:text="@string/txtForMoreInfoContact"
+                android:onClick="myMoreInfoContactClickHandler"
+                android:clickable="true"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:padding="10dp"
+                android:gravity="left|center"
+                android:layout_below="@+id/moreinfodetails"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/moreinfoabout"
+                android:drawableLeft="@drawable/moreinfoabout"
+                android:drawableRight="@drawable/rightarrow"
+                android:text="@string/txtForMoreInfoAbout"
+                android:onClick="myMoreInfoAboutClickHandler"
+                android:clickable="true"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:padding="10dp"
+                android:gravity="left|center"
+                android:layout_below="@+id/moreinfocontact"/>
+
+            <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/mywebviewMoreInfo"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            </WebView>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</ViewFlipper>
+
+
+</RelativeLayout>
+
+

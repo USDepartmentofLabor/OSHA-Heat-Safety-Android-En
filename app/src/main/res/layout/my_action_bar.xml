@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name_long"
+        android:id="@+id/myHomeButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:onClick="myHomeButtonClickHandler"
+        android:background="@null"
+        android:drawableLeft="@drawable/backarrow"
+        />
+
+    <TextView
+        android:id="@+id/myTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="myTitle"
+        android:gravity="center"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="50dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtForTitleMoreInfo"
+        android:id="@+id/myMoreInfoButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:onClick="myMoreInfoButtonClickHandler"
+        android:background="@null"
+        android:drawableLeft="@drawable/backarrow"
+        />
+
+
+</RelativeLayout>
