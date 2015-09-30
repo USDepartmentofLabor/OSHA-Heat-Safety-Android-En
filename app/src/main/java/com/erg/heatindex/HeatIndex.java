@@ -117,6 +117,9 @@ public class HeatIndex extends Activity {
 		final ImageButton arrow2Button = (ImageButton) findViewById(R.id.arrow2);
 		final ImageButton getCurrentLocationButton = (ImageButton) findViewById(R.id.arrow3);
 
+		final TextView myRisk1 = (TextView) findViewById(R.id.risk);
+		final TextView myRisk2 = (TextView) findViewById(R.id.risk2);
+
 
 		spinner = (ProgressBar)findViewById(R.id.progressBar1);
 
@@ -192,6 +195,7 @@ public class HeatIndex extends Activity {
 		myStates.put("West Virginia", "WV");
 		myStates.put("Wisconsin", "WI");
 		myStates.put("Wyoming", "WY");
+		myStates.put("District of Columbia", "D.C.");
 
 
 		//calculate current location info
@@ -209,16 +213,12 @@ public class HeatIndex extends Activity {
 		//existing version of IPHONE
 		//can not edit location
 		//after clicking, it will load the current address again
-/*
 		editLocation.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//getCurrentLoation
-				String myLocation = getCurrentLocationName();
-				editLocation.setText(myLocation.toString());
-				getCalculateDataByEnteredAddressStr();
+				editLocation.setText("");
 			}
-		}); */
+		});
 
 
 		editLocation.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -237,8 +237,6 @@ public class HeatIndex extends Activity {
 							editLocation.setText(myEnteredLocation2.toString());
 
 
-
-
 							if (myEnteredLocation2.toString() == "Not Found") {
 								cleanUIforMainPage();
 								//hide progress
@@ -252,9 +250,7 @@ public class HeatIndex extends Activity {
 							break;
 					}
 					return true;
-				}
-
-				catch (Exception e) {
+				} catch (Exception e) {
 					Log.e(DEBUG_TAG, "NOAA failed", e);
 					return false;
 				}
@@ -326,73 +322,28 @@ public class HeatIndex extends Activity {
 			}
 		});
 
+		myRisk1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (myRiskLevel>0) {
+					goCurrentPrecautionView();
+				}
+			}
+		});
+
+		myRisk2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (myMaxRiskLevel>0) {
+					goMaxPrecautionView();
+				}
+			}
+		});
+
 		arrow1Button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				mWebView.setVisibility(View.VISIBLE);
-
-				//hiding default app icon
-				ActionBar actionBar = getActionBar();
-				actionBar.setDisplayShowHomeEnabled(false);
-
-				//displaying custom ActionBar
-				View mActionBarView = getLayoutInflater().inflate(R.layout.my_action_bar, null);
-				actionBar.setCustomView(mActionBarView);
-				actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-
-				TextView myTitle = (TextView) findViewById(R.id.myTitle);
-				myTitle.setText(getString(R.string.txtForTitlePrecautions));
-
-				resetMyCustomizedButtonsOnActionBar(1);
-
-
-				if (myRiskLevel == 4) {
-					actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 0, 0)));
-					if (isSpanish) {
-						mWebView.loadUrl("file:///android_asset/precautions_veryhigh_es.html");
-					}
-					else{
-						mWebView.loadUrl("file:///android_asset/precautions_veryhigh.html");
-					}
-				}
-				if (myRiskLevel == 3) {
-					actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 128, 0)));
-					if (isSpanish) {
-						mWebView.loadUrl("file:///android_asset/precautions_high_es.html");
-					}
-					else{
-						mWebView.loadUrl("file:///android_asset/precautions_high.html");
-					}
-				}
-				if (myRiskLevel == 2) {
-					actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255,172,0)));
-					if (isSpanish) {
-						mWebView.loadUrl("file:///android_asset/precautions_moderate_es.html");
-					}
-					else{
-						mWebView.loadUrl("file:///android_asset/precautions_moderate.html");
-					}
-				}
-				if (myRiskLevel == 1) {
-					actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 255, 51)));
-					if (isSpanish) {
-						mWebView.loadUrl("file:///android_asset/precautions_lower_es.html");
-					}
-					else{
-						mWebView.loadUrl("file:///android_asset/precautions_lower.html");
-					}
-				}
-
-				mWebView.getSettings().setJavaScriptEnabled(true);
-				mWebView.getSettings().setSaveFormData(true);
-				mWebView.getSettings().setBuiltInZoomControls(true);
-				mWebView.setWebViewClient(new MyWebViewClient());
-
-				myDoneMenu.setVisible(false);
-				myDOLMenu.setVisible(false);
-
-				actionBar.setDisplayUseLogoEnabled(false);
-				actionBar.setIcon(android.R.color.transparent);
+				goCurrentPrecautionView();
 			}
 		});
 
@@ -400,70 +351,7 @@ public class HeatIndex extends Activity {
 		arrow2Button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				mWebView.setVisibility(View.VISIBLE);
-
-
-				ActionBar actionBar = getActionBar();
-
-				//hiding default app icon
-				actionBar.setDisplayShowHomeEnabled(false);
-
-				//displaying custom ActionBar
-				View mActionBarView = getLayoutInflater().inflate(R.layout.my_action_bar, null);
-				actionBar.setCustomView(mActionBarView);
-				actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-
-				resetMyCustomizedButtonsOnActionBar(1);
-				TextView myTitle = (TextView) findViewById(R.id.myTitle);
-				myTitle.setText(getString(R.string.txtForTitlePrecautions));
-
-				if (myMaxRiskLevel == 4) {
-					actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 0, 0)));
-					if (isSpanish) {
-						mWebView.loadUrl("file:///android_asset/precautions_veryhigh_es.html");
-					}
-					else{
-						mWebView.loadUrl("file:///android_asset/precautions_veryhigh.html");
-					}
-				}
-				if (myMaxRiskLevel == 3) {
-					actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 128, 0)));
-					if (isSpanish) {
-						mWebView.loadUrl("file:///android_asset/precautions_high_es.html");
-					}
-					else{
-						mWebView.loadUrl("file:///android_asset/precautions_high.html");
-					}
-				}
-				if (myMaxRiskLevel == 2) {
-					actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255,172,0)));
-					if (isSpanish) {
-						mWebView.loadUrl("file:///android_asset/precautions_moderate_es.html");
-					}
-					else{
-						mWebView.loadUrl("file:///android_asset/precautions_moderate.html");
-					}
-				}
-				if (myMaxRiskLevel == 1 || myMaxRiskLevel == 0) {
-					actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 255, 51)));
-					if (isSpanish) {
-						mWebView.loadUrl("file:///android_asset/precautions_lower_es.html");
-					}
-					else{
-						mWebView.loadUrl("file:///android_asset/precautions_lower.html");
-					}
-				}
-
-				mWebView.getSettings().setJavaScriptEnabled(true);
-				mWebView.getSettings().setSaveFormData(true);
-				mWebView.getSettings().setBuiltInZoomControls(true);
-				mWebView.setWebViewClient(new MyWebViewClient());
-
-				myDoneMenu.setVisible(false);
-				myDOLMenu.setVisible(false);
-
-				actionBar.setDisplayUseLogoEnabled(false);
-				actionBar.setIcon(android.R.color.transparent);
+				goMaxPrecautionView();
 			}
 		});
 
@@ -484,6 +372,144 @@ public class HeatIndex extends Activity {
 			}
 		});
 	} //end of function OnCreate
+
+
+
+	public void goCurrentPrecautionView(){
+		WebView mWebView= (WebView) findViewById(R.id.mywebview);
+		mWebView.setVisibility(View.VISIBLE);
+
+		//hiding default app icon
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayShowHomeEnabled(false);
+
+		//displaying custom ActionBar
+		View mActionBarView = getLayoutInflater().inflate(R.layout.my_action_bar, null);
+		actionBar.setCustomView(mActionBarView);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+		TextView myTitle = (TextView) findViewById(R.id.myTitle);
+		myTitle.setText(getString(R.string.txtForTitlePrecautions));
+
+		resetMyCustomizedButtonsOnActionBar(1);
+
+
+		if (myRiskLevel == 4) {
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 0, 0)));
+			if (isSpanish) {
+				mWebView.loadUrl("file:///android_asset/precautions_veryhigh_es.html");
+			}
+			else{
+				mWebView.loadUrl("file:///android_asset/precautions_veryhigh.html");
+			}
+		}
+		if (myRiskLevel == 3) {
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 128, 0)));
+			if (isSpanish) {
+				mWebView.loadUrl("file:///android_asset/precautions_high_es.html");
+			}
+			else{
+				mWebView.loadUrl("file:///android_asset/precautions_high.html");
+			}
+		}
+		if (myRiskLevel == 2) {
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255,172,0)));
+			if (isSpanish) {
+				mWebView.loadUrl("file:///android_asset/precautions_moderate_es.html");
+			}
+			else{
+				mWebView.loadUrl("file:///android_asset/precautions_moderate.html");
+			}
+		}
+		if (myRiskLevel == 1) {
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 255, 51)));
+			if (isSpanish) {
+				mWebView.loadUrl("file:///android_asset/precautions_lower_es.html");
+			}
+			else{
+				mWebView.loadUrl("file:///android_asset/precautions_lower.html");
+			}
+		}
+
+		mWebView.getSettings().setJavaScriptEnabled(true);
+		mWebView.getSettings().setSaveFormData(true);
+		mWebView.getSettings().setBuiltInZoomControls(true);
+		mWebView.setWebViewClient(new MyWebViewClient());
+
+		myDoneMenu.setVisible(false);
+		myDOLMenu.setVisible(false);
+
+		actionBar.setDisplayUseLogoEnabled(false);
+		actionBar.setIcon(android.R.color.transparent);
+	}
+
+	public void goMaxPrecautionView() {
+		WebView mWebView = (WebView) findViewById(R.id.mywebview);
+		mWebView.setVisibility(View.VISIBLE);
+
+		ActionBar actionBar = getActionBar();
+
+		//hiding default app icon
+		actionBar.setDisplayShowHomeEnabled(false);
+
+		//displaying custom ActionBar
+		View mActionBarView = getLayoutInflater().inflate(R.layout.my_action_bar, null);
+		actionBar.setCustomView(mActionBarView);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+		resetMyCustomizedButtonsOnActionBar(1);
+		TextView myTitle = (TextView) findViewById(R.id.myTitle);
+		myTitle.setText(getString(R.string.txtForTitlePrecautions));
+
+		if (myMaxRiskLevel == 4) {
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 0, 0)));
+			if (isSpanish) {
+				mWebView.loadUrl("file:///android_asset/precautions_veryhigh_es.html");
+			}
+			else{
+				mWebView.loadUrl("file:///android_asset/precautions_veryhigh.html");
+			}
+		}
+		if (myMaxRiskLevel == 3) {
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 128, 0)));
+			if (isSpanish) {
+				mWebView.loadUrl("file:///android_asset/precautions_high_es.html");
+			}
+			else{
+				mWebView.loadUrl("file:///android_asset/precautions_high.html");
+			}
+		}
+		if (myMaxRiskLevel == 2) {
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255,172,0)));
+			if (isSpanish) {
+				mWebView.loadUrl("file:///android_asset/precautions_moderate_es.html");
+			}
+			else{
+				mWebView.loadUrl("file:///android_asset/precautions_moderate.html");
+			}
+		}
+		if (myMaxRiskLevel == 1 || myMaxRiskLevel == 0) {
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(255, 255, 51)));
+			if (isSpanish) {
+				mWebView.loadUrl("file:///android_asset/precautions_lower_es.html");
+			}
+			else{
+				mWebView.loadUrl("file:///android_asset/precautions_lower.html");
+			}
+		}
+
+		mWebView.getSettings().setJavaScriptEnabled(true);
+		mWebView.getSettings().setSaveFormData(true);
+		mWebView.getSettings().setBuiltInZoomControls(true);
+		mWebView.setWebViewClient(new MyWebViewClient());
+
+		myDoneMenu.setVisible(false);
+		myDOLMenu.setVisible(false);
+
+		actionBar.setDisplayUseLogoEnabled(false);
+		actionBar.setIcon(android.R.color.transparent);
+	}
+
 
 
 	/* get geo info of current place */
@@ -586,12 +612,17 @@ public class HeatIndex extends Activity {
 					String stateStr = adrs.getAdminArea();
 					Object stateObj = stateStr;
 					Object stateAb = myStates.get(stateObj);
-					if (city != null && !city.equals("")) {
-						cityName = city + " " + stateAb.toString();
-					} else {
 
+					if (city != null && !city.equals("")) {
+						if (stateAb != null) {
+							cityName = city + " " + stateAb.toString();
+						}
+						else {
+							cityName = city + " " + stateStr;
+						}
+					} else {
 					}
-					// you should also try with addresses.get(0).toSring();
+					//cityName = city + " " + adrs.getAdminArea();
 				}
 			}
 		} catch (Exception e) {
