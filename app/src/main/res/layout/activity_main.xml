@@ -51,7 +51,6 @@ tools:context=".MainActivity">
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="@string/txtForManualData"
             android:editable="true"
             android:inputType="text"
             android:imeOptions="actionGo"
@@ -156,11 +155,8 @@ tools:context=".MainActivity">
         android:textSize="28sp"
         android:id="@+id/risk"
         android:layout_below="@+id/now"
-        android:layout_marginTop="10dp"/>
-
-            <!--android:drawableRight="@drawable/chevron"
-            android:onClick="onClick"
-            android:clickable="true"-->
+        android:layout_marginTop="10dp"
+        android:clickable="true" />
 
             <ImageButton
                 android:id="@+id/arrow1"
@@ -213,10 +209,8 @@ tools:context=".MainActivity">
         android:id="@+id/risk2"
         android:layout_below="@+id/max"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
-            <!-- android:drawableRight="@drawable/chevron"
-        android:onClick="onClick"
-        android:clickable="true"-->
+        android:layout_marginTop="10dp"
+        android:clickable="true" />
 
             <ImageButton
                 android:id="@+id/arrow2"
