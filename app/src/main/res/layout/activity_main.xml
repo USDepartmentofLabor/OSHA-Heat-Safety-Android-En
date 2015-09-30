@@ -82,7 +82,7 @@ tools:context=".MainActivity">
             android:inputType="number"
             android:layout_alignParentLeft="true"
             android:drawableLeft="@drawable/temp"
-            android:hint="@string/txtTemperature"
+            android:hint=""
             android:contentDescription="@string/txtTemperature"
             />
 
@@ -112,7 +112,7 @@ tools:context=".MainActivity">
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:drawableLeft="@drawable/humidity"
-            android:hint="@string/txtHumidity"
+            android:hint=""
             android:contentDescription="@string/txtHumidity"/>
 
         <TextView
