@@ -12,42 +12,32 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-
 import android.net.Uri;
-
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.text.InputType;
 import android.util.Log;
-
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
-
 import android.widget.ImageButton;
-
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
-import java.net.URL;
 import java.util.Calendar;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
-import java.util.Hashtable;
-
-import android.view.View.OnClickListener;
-import android.webkit.WebView;
-import android.view.MenuItem;
-import android.widget.ViewFlipper;
 
 
 public class HeatIndex extends Activity {
@@ -237,7 +227,7 @@ public class HeatIndex extends Activity {
 							editLocation.setText(myEnteredLocation2.toString());
 
 
-							if (myEnteredLocation2.toString() == "Not Found") {
+							if (myEnteredLocation2.toString() == getString(R.string.txtNotFound)) {
 								cleanUIforMainPage();
 								//hide progress
 								//spinner.setVisibility(View.GONE);
@@ -326,6 +316,8 @@ public class HeatIndex extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (myRiskLevel>0) {
+					//to close soft keyboard
+					imm.hideSoftInputFromWindow(myRisk1.getWindowToken(), 0);
 					goCurrentPrecautionView();
 				}
 			}
@@ -335,6 +327,7 @@ public class HeatIndex extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (myMaxRiskLevel>0) {
+					imm.hideSoftInputFromWindow(myRisk2.getWindowToken(), 0);
 					goMaxPrecautionView();
 				}
 			}
@@ -343,6 +336,7 @@ public class HeatIndex extends Activity {
 		arrow1Button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
+				imm.hideSoftInputFromWindow(arrow1Button.getWindowToken(), 0);
 				goCurrentPrecautionView();
 			}
 		});
@@ -351,6 +345,7 @@ public class HeatIndex extends Activity {
 		arrow2Button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
+				imm.hideSoftInputFromWindow(arrow2Button.getWindowToken(),0);
 				goMaxPrecautionView();
 			}
 		});
@@ -376,6 +371,7 @@ public class HeatIndex extends Activity {
 
 
 	public void goCurrentPrecautionView(){
+
 		WebView mWebView= (WebView) findViewById(R.id.mywebview);
 		mWebView.setVisibility(View.VISIBLE);
 
@@ -599,7 +595,7 @@ public class HeatIndex extends Activity {
 
 
 	public String getLocationByAddress(String addressStr) {
-		String cityName = "Not Found";
+		String cityName = getString(R.string.txtNotFound);
 		Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
 		try {
 
@@ -633,7 +629,7 @@ public class HeatIndex extends Activity {
 
 
 	public String getCurrentLocationName() {
-		String cityName = "Not Found";
+		String cityName = getString(R.string.txtNotFound);
 		Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
 
 		double myLongitude = getLocationLongitude();
@@ -1114,7 +1110,7 @@ public class HeatIndex extends Activity {
 
 			String myEnteredLocation = getLocationByAddress(editLocation.getText().toString());
 
-			if (myEnteredLocation == "Not Found") {
+			if (myEnteredLocation == getString(R.string.txtNotFound)) {
 				new AlertDialog.Builder(editText1.getContext())
 						.setTitle("Notification")
 						.setMessage("We can not find the address you entered. Please verify it.")
