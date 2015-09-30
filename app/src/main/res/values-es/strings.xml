@@ -23,9 +23,13 @@
         <string name="txtForMoreInfoAbout">&#160;&#160;Sobre la Aplicación</string>
         <string name="txtTemperature">grados de Temperatura Farenheit</string>
         <string name="txtHumidity">por ciento de Humedad</string>
+        <string name="btnBottomMenuHome">Inicio</string>
+        <string name="btnBottomMenuBack"> &#171; Regresar</string>
+        <string name="btnBottomMenuMainmenu">Más información</string>
         <string name="txtForManualData">Datos Manuales</string>
         <string name="location">Localización</string>
         <string name="txtForAt">A</string>
         <string name="done">Terminado</string>
         <string name="dol">Departamento de Trabajo de EE.UU.</string>
+        <string name="txtNotFound">Extraviado</string>
 </resources>
