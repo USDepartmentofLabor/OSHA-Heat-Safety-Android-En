@@ -32,4 +32,5 @@
         <string name="done">Terminado</string>
         <string name="dol">Departamento de Trabajo de EE.UU.</string>
         <string name="txtNotFound">Extraviado</string>
+        <string name="heatIndexUpdated">Heat Index Information Updated!</string>
 </resources>

@@ -78,7 +78,9 @@ public class ProcessXML extends AsyncTask<String[], Integer, Long> {
     @Override
     protected void onPostExecute(Long totalSize) {
         //call back data to main thread
-        pDialog.dismiss();
+        if (null != pDialog) {
+            pDialog.dismiss();
+        }
         activity.callBackData(myParsedExampleDataSet);
     }
 

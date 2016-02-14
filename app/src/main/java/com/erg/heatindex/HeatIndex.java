@@ -12,6 +12,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
@@ -31,6 +33,7 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.util.Calendar;
@@ -510,6 +513,8 @@ public class HeatIndex extends Activity {
 
 	/* get geo info of current place */
 	public double getLocationLatitude() {
+		Log.d(DEBUG_TAG, " --- getLocationLatitude - BEGIN");
+
 		try {
 			LocationManager locMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -519,19 +524,24 @@ public class HeatIndex extends Activity {
 			}
 
 			if (location != null) {
+				Log.d(DEBUG_TAG, " --- getLocationLatitude - END");
 				return location.getLatitude();
 			} else {
 				Log.i(DEBUG_TAG, "Location failed - no provider");
+				Log.d(DEBUG_TAG, " --- getLocationLatitude - END");
 				return 0;
 			}
 		} catch (Exception e) {
 			Log.e(DEBUG_TAG, "Location failed", e);
+			Log.d(DEBUG_TAG, " --- getLocationLatitude - END");
 			return 0;
 		}
 	}
 
 	//default  place
 	public double getLocationLongitude() {
+		Log.d(DEBUG_TAG, " --- getLocationLongitude - BEGIN");
+
 		try {
 			LocationManager locMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -543,13 +553,16 @@ public class HeatIndex extends Activity {
 			if (location != null) {
 				//   onLocationChanged(location);
 				double myTest = location.getLongitude();
+				Log.d(DEBUG_TAG, " --- getLocationLongitude - END");
 				return location.getLongitude();
 			} else {
 				Log.i(DEBUG_TAG, "Location failed Hui - no provider");
+				Log.d(DEBUG_TAG, " --- getLocationLongitude - END");
 				return 0;
 			}
 		} catch (Exception e) {
 			Log.e(DEBUG_TAG, "Location failed", e);
+			Log.d(DEBUG_TAG, " --- getLocationLongitude - END");
 			return 0;
 		}
 	}
@@ -558,6 +571,8 @@ public class HeatIndex extends Activity {
 
 	/* get geo info of entered address */
 	public double getLocationLatitudeByEnteredAddress(String addressStr) {
+		Log.d(DEBUG_TAG, " --- getLocationLatitudeByEnteredAddress - BEGIN");
+
 		Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
 		double retValue = 0;
 		try {
@@ -571,10 +586,14 @@ public class HeatIndex extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		Log.d(DEBUG_TAG, " --- getLocationLatitudeByEnteredAddress - END");
 		return retValue;
 	}
 
 	public double getLocationLongitudeByEnteredAddress(String addressStr) {
+		Log.d(DEBUG_TAG, " --- getLocationLongitudeByEnteredAddress - BEGIN");
+
 		Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
 		double retValue = 0;
 		try {
@@ -589,12 +608,16 @@ public class HeatIndex extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		Log.d(DEBUG_TAG, " --- getLocationLongitudeByEnteredAddress - END");
 		return retValue;
 	}
 	/* end of get geo info of entered address */
 
 
 	public String getLocationByAddress(String addressStr) {
+		Log.d(DEBUG_TAG, " --- getLocationByAddress - BEGIN");
+
 		String cityName = getString(R.string.txtNotFound);
 		Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
 		try {
@@ -616,6 +639,7 @@ public class HeatIndex extends Activity {
 						else {
 							cityName = city + " " + stateStr;
 						}
+						break;
 					} else {
 					}
 					//cityName = city + " " + adrs.getAdminArea();
@@ -624,11 +648,15 @@ public class HeatIndex extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		Log.d(DEBUG_TAG, " --- getLocationByAddress - END");
 		return cityName;
 	}
 
 
 	public String getCurrentLocationName() {
+		Log.d(DEBUG_TAG, " --- getCurrentLocationName - BEGIN");
+
 		String cityName = getString(R.string.txtNotFound);
 		Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
 
@@ -647,6 +675,7 @@ public class HeatIndex extends Activity {
 					Object stateAb = myStates.get(stateObj);
 					if (city != null && !city.equals("")) {
 						cityName = city + ", " + stateAb.toString();
+						break;
 					} else {
 
 					}
@@ -657,11 +686,15 @@ public class HeatIndex extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		Log.d(DEBUG_TAG, " --- getCurrentLocationName - END");
 		return cityName;
 	}
 
 
 	public double getHeadIndexFromNoaaData(ParsedDataSetWeather parsedExampleDataSet) {
+		Log.d(DEBUG_TAG, " --- getHeadIndexFromNoaaData - BEGIN");
+
 		try {
 			dataValid = 1;
 
@@ -680,6 +713,14 @@ public class HeatIndex extends Activity {
 			Vector myHumidVec = parsedExampleDataSet.gethumidity();
 			Vector myTimeVec = parsedExampleDataSet.getmaxtime();
 
+			//Log.d(DEBUG_TAG, "Temperature Vec size " + myTempVec.toString() );
+			//Log.d(DEBUG_TAG, "Humidity Vec size    " + myHumidVec.toString() );
+			//Log.d(DEBUG_TAG, "Time Vec size        " + myTimeVec.toString() );
+
+			Log.d(DEBUG_TAG, " --- Temperature Vec size " + myTempVec.size() );
+			Log.d(DEBUG_TAG, " --- Humidity Vec size    " + myHumidVec.size() );
+			Log.d(DEBUG_TAG, " --- Time Vec size        " + myTimeVec.size() );
+
 			//System.out.println(myTempVec.toString());
 			//System.out.println(myHumidVec.toString());
 			//System.out.println(myTimeVec.toString());
@@ -691,13 +732,21 @@ public class HeatIndex extends Activity {
 			int[] myTempArray = new int[myTempVec.size()];
 			for (int i = 0; i < myTempVec.size(); i++) {
 				String val = (String) myTempVec.get(i);
-				myTempArray[i] = Integer.parseInt(val);
+
+				//Log.d(DEBUG_TAG, " Temp " + i + " " + val);
+
+				myTempArray[i] = stringToInt(val);  //Integer.parseInt(val);
+
+
 			}
 
 			int[] myHumidArray = new int[myHumidVec.size()];
 			for (int i = 0; i < myHumidVec.size(); i++) {
 				String val = (String) myHumidVec.get(i);
-				myHumidArray[i] = Integer.parseInt(val);
+
+				//Log.d(DEBUG_TAG, " Humid " + i + " " + val);
+
+				myHumidArray[i] = stringToInt(val); //Integer.parseInt(val);
 			}
 
 			//the following code is handling the cache in the getting weather data
@@ -706,10 +755,14 @@ public class HeatIndex extends Activity {
 			int myCurrentIndex = 0;      //the index of the first data for our calculation
 			for (int i = 0; i < myTempVec.size(); i++) {
 				String val = (String) myTimeVec.get(i);
+
+				//Log.d(DEBUG_TAG, " Time " + i + " " + val);
+
 				String getDay = val.substring(8, 10);
 				String getTime = val.substring(11, 13);
 
-				if (myDay == Integer.parseInt(getDay) && myHour < Integer.parseInt(getTime)) {
+				//if (myDay == Integer.parseInt(getDay) && myHour < Integer.parseInt(getTime)) {
+				if (myDay == stringToInt(getDay) && myHour < stringToInt(getTime)) {
 					myCurrentIndex = i;
 					break;
 				}
@@ -794,7 +847,7 @@ public class HeatIndex extends Activity {
 
 				//format to 8am, 2pm etc
 				int intHourValue;
-				intHourValue = Integer.parseInt(myMaxTimeStr);
+				intHourValue = stringToInt(myMaxTimeStr); // Integer.parseInt(myMaxTimeStr);
 				String ampm = "AM";
 
 				if (intHourValue < 10) {
@@ -824,12 +877,30 @@ public class HeatIndex extends Activity {
 				myMaxTime = "";
 			}
 
+			Log.d(DEBUG_TAG, " --- getHeadIndexFromNoaaData - END");
 			return myValue;
 		} catch (Exception e) {
 			Log.e(DEBUG_TAG, "NOAA failed", e);
+			Log.d(DEBUG_TAG, " --- getHeadIndexFromNoaaData - END");
 			return 0;
 		}
 	}
+
+
+	public int stringToInt(String inValue) {
+		int retValue = 0;
+
+		try {
+
+			retValue = Integer.parseInt(inValue);
+
+		} catch (Exception e) {
+			Log.e(DEBUG_TAG, "Integer Parser error ", e);
+		}
+
+		return retValue;
+	}
+
 
 	//this method is used for NOT very low = having precautions cases
 	public void setUIforResults(double HIdoubleP) {
@@ -933,6 +1004,8 @@ public class HeatIndex extends Activity {
 			}
 
 			maxTimeResult.setText(myMaxTime);
+
+
 		} else {
 			maxRisk.setText(getString(R.string.txtForCurrentMinimalRisk));
 			maxTimeResult.setVisibility(View.GONE);
@@ -1086,6 +1159,9 @@ public class HeatIndex extends Activity {
 					setUIforManualLow();
 				}
 			}
+
+
+
 		} catch (Exception e) {
 			Log.e(DEBUG_TAG, "WeatherQueryError", e);
 		}
@@ -1094,6 +1170,8 @@ public class HeatIndex extends Activity {
 
 	//user enters an address
 	private void getCalculateDataByEnteredAddressStr() {
+		Log.d(DEBUG_TAG, " --- getCalculateDataByEnteredAddressStr - BEGIN");
+
 		EditText editLocation = ((EditText) findViewById(R.id.location));
 		EditText editText1 = ((EditText) findViewById(R.id.temp));
 		EditText editText2 = ((EditText) findViewById(R.id.humidity));
@@ -1138,11 +1216,15 @@ public class HeatIndex extends Activity {
 		catch (Exception e) {
 			 Log.e(DEBUG_TAG, "WeatherQueryError", e);
 		}
+
+		Log.d(DEBUG_TAG, " --- getCalculateDataByEnteredAddressStr - END");
 	} //end of function
 
 
     //callback  from AsyncTask
 	public void callBackData(ParsedDataSetWeather myData) {
+		Log.d(DEBUG_TAG, " --- callBackData - BEGIN");
+
 		double myValue;
 		myValue = getHeadIndexFromNoaaData(myData);
 
@@ -1181,12 +1263,17 @@ public class HeatIndex extends Activity {
 						setUIforMaxResult(valueMaxHeatIndex);
 					}
 				}
+
+			//Show the Toast for information notification
+			showToast();
+
 		}   //end of try
 		catch (Exception e) {
 			Log.e(DEBUG_TAG, "WeatherQueryError", e);
 		}
-	} //end of function
 
+		Log.d(DEBUG_TAG, " --- callBackData - END");
+	} //end of function
 
 
      /* Some preparation for the APP and Menu actions.
@@ -1374,6 +1461,10 @@ public class HeatIndex extends Activity {
 		else{
 			mWebViewMoreInfo.loadUrl("file:///android_asset/Signs and Symptoms.html");
 		}
+
+		mWebViewMoreInfo.getSettings().setJavaScriptEnabled(true);
+		mWebViewMoreInfo.getSettings().setSaveFormData(true);
+		mWebViewMoreInfo.getSettings().setBuiltInZoomControls(true);
 	}
 
 	public void myMoreInfoFirstAidClickHandler(View target) {
@@ -1390,6 +1481,10 @@ public class HeatIndex extends Activity {
 		else{
 			mWebViewMoreInfo.loadUrl("file:///android_asset/First Aid.html");
 		}
+
+		mWebViewMoreInfo.getSettings().setJavaScriptEnabled(true);
+		mWebViewMoreInfo.getSettings().setSaveFormData(true);
+		mWebViewMoreInfo.getSettings().setBuiltInZoomControls(true);
 	}
 
 	public void myMoreInfoDetailsClickHandler(View target) {
@@ -1406,6 +1501,10 @@ public class HeatIndex extends Activity {
 		else{
 			mWebViewMoreInfo.loadUrl("file:///android_asset/More Details.html");
 		}
+
+		mWebViewMoreInfo.getSettings().setJavaScriptEnabled(true);
+		mWebViewMoreInfo.getSettings().setSaveFormData(true);
+		mWebViewMoreInfo.getSettings().setBuiltInZoomControls(true);
 	}
 
 
@@ -1424,6 +1523,10 @@ public class HeatIndex extends Activity {
 		else{
 			mWebViewMoreInfo.loadUrl("file:///android_asset/Contact OSHA.html");
 		}
+
+		mWebViewMoreInfo.getSettings().setJavaScriptEnabled(true);
+		mWebViewMoreInfo.getSettings().setSaveFormData(true);
+		mWebViewMoreInfo.getSettings().setBuiltInZoomControls(true);
 	}
 
 
@@ -1441,6 +1544,41 @@ public class HeatIndex extends Activity {
 		else{
 			mWebViewMoreInfo.loadUrl("file:///android_asset/About This App.html");
 		}
+
+		mWebViewMoreInfo.getSettings().setJavaScriptEnabled(true);
+		mWebViewMoreInfo.getSettings().setSaveFormData(true);
+		mWebViewMoreInfo.getSettings().setBuiltInZoomControls(true);
+	}
+
+
+	public boolean checkInternetConnection(Context context) {
+		ConnectivityManager check = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (check != null) {
+			NetworkInfo[] info = check.getAllNetworkInfo();
+			if (info != null) {
+				for (int i = 0; i < info.length; i++) {
+					if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public void showToast() {
+		Log.d(DEBUG_TAG, " --- showToast - BEGIN");
+
+		Context context = getApplicationContext();
+		CharSequence text = getString(R.string.heatIndexUpdated);
+		int duration = Toast.LENGTH_SHORT;
+
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
+
+		Log.d(DEBUG_TAG, " --- showToast - END");
 	}
 }
 

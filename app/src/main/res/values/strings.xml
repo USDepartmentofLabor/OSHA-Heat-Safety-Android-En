@@ -31,4 +31,5 @@
     <string name="done">Done</string>
     <string name="dol">U.S. Department of Labor</string>
     <string name="txtNotFound">Not Found</string>
+    <string name="heatIndexUpdated">Heat Index Information Updated!</string>
 </resources>

@@ -30,7 +30,8 @@ public class HandlerWeather extends DefaultHandler{
         
         private int mystarttemp=0;
         private int mystarthumid=0;
-        
+
+        private String myTimeString = null;
         
         
         private ParsedDataSetWeather myParsedExampleDataSetWeather = new ParsedDataSetWeather();
@@ -109,6 +110,7 @@ public class HandlerWeather extends DefaultHandler{
 	        	this.in_value = true;	                
 	        }
 	        else if (localName.equals("start-valid-time")) {
+                myTimeString = null;
 	        	this.in_start_valid_time = true;	                
 	        }      	
         	
@@ -152,7 +154,9 @@ public class HandlerWeather extends DefaultHandler{
             		this.in_value = false;	                
             }
             else if (localName.equals("start-valid-time")) {
-        		this.in_start_valid_time = false;	                
+                myParsedExampleDataSetWeather.addmaxtime(myTimeString);
+                myTimeString = null;
+        		this.in_start_valid_time = false;
         }
         	
         }
@@ -172,8 +176,9 @@ public class HandlerWeather extends DefaultHandler{
                 //myParsedExampleDataSetWeather.setExtractedString(new String(ch, start, length));
                 }
                 
-                if(this.in_start_valid_time){                	
-                		myParsedExampleDataSetWeather.addmaxtime(new String(ch, start, length));
+                if(this.in_start_valid_time){
+                    myTimeString += (new String(ch, start, length));
+                    //myParsedExampleDataSetWeather.addmaxtime(new String(ch, start, length));
                 }
                 
     }
