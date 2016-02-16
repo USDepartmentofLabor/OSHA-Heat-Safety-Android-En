@@ -18,6 +18,7 @@ import javax.xml.parsers.SAXParserFactory;
  */
 
 public class ProcessXML extends AsyncTask<String[], Integer, Long> {
+    public static String TAG = ProcessXML.class.getSimpleName();
 
     private ParsedDataSetWeather myParsedExampleDataSet;
     private ProgressDialog pDialog;
@@ -26,8 +27,13 @@ public class ProcessXML extends AsyncTask<String[], Integer, Long> {
 
 
     public ProcessXML(HeatIndex activity, String url) {
+        Log.d(TAG, " --- ProcessXML - BEGIN");
+        Log.d(TAG, " --- ProcessXML - URL " + url );
+
         this.activity = activity;
         this.url = url;
+
+        Log.d(TAG, " --- ProcessXML - END");
     }
 
     protected Long doInBackground(String[]... params){

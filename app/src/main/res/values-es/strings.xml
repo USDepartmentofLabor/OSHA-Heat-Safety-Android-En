@@ -33,4 +33,6 @@
         <string name="dol">Departamento de Trabajo de EE.UU.</string>
         <string name="txtNotFound">Extraviado</string>
         <string name="heatIndexUpdated">Heat Index Information Updated!</string>
+        <string name="addressNotFound">We cannot find the address you entered. Please verify it.</string>
+        <string name="txtNotification">Notification</string>
 </resources>

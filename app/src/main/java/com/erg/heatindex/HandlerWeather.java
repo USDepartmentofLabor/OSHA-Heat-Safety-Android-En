@@ -1,12 +1,15 @@
 package com.erg.heatindex;
 
+import android.util.Log;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
  
  
 public class HandlerWeather extends DefaultHandler{
- 
+    public static String TAG = HandlerWeather.class.getSimpleName();
+
         // ===========================================================
         // Fields
         // ===========================================================
@@ -165,6 +168,8 @@ public class HandlerWeather extends DefaultHandler{
          * <tag>characters</tag> */
         @Override
     public void characters(char ch[], int start, int length) {
+            //Log.d(TAG, " --- RAW TEXT - " + new String(ch, start, length));
+
                 if(this.in_value){
                 	if (this.mystarttemp==1){
                 		myParsedExampleDataSetWeather.addtemperature(new String(ch, start, length));

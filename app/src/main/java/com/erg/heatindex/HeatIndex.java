@@ -629,6 +629,9 @@ public class HeatIndex extends Activity {
 
 					String city = adrs.getLocality();
 					String stateStr = adrs.getAdminArea();
+
+					if (null == stateStr) continue;
+
 					Object stateObj = stateStr;
 					Object stateAb = myStates.get(stateObj);
 
@@ -713,17 +716,23 @@ public class HeatIndex extends Activity {
 			Vector myHumidVec = parsedExampleDataSet.gethumidity();
 			Vector myTimeVec = parsedExampleDataSet.getmaxtime();
 
-			//Log.d(DEBUG_TAG, "Temperature Vec size " + myTempVec.toString() );
-			//Log.d(DEBUG_TAG, "Humidity Vec size    " + myHumidVec.toString() );
-			//Log.d(DEBUG_TAG, "Time Vec size        " + myTimeVec.toString() );
-
 			Log.d(DEBUG_TAG, " --- Temperature Vec size " + myTempVec.size() );
-			Log.d(DEBUG_TAG, " --- Humidity Vec size    " + myHumidVec.size() );
+			Log.d(DEBUG_TAG, " --- Humidity Vec size    " + myHumidVec.size());
 			Log.d(DEBUG_TAG, " --- Time Vec size        " + myTimeVec.size() );
 
-			//System.out.println(myTempVec.toString());
-			//System.out.println(myHumidVec.toString());
-			//System.out.println(myTimeVec.toString());
+			//Log.d(DEBUG_TAG, " --- Time Temperature Humidity ");
+			//for (int i = 0; i < myTempVec.size(); i++) {
+			//	Log.d(DEBUG_TAG, " --- [" + i + "] " + myTimeVec.elementAt(i).toString() + " " + myTempVec.elementAt(i).toString() + " " + myHumidVec.elementAt(i).toString());
+			//}
+
+			//Log.d(DEBUG_TAG, " --- Temperature Vec " + myTempVec.toString() );
+			//Log.d(DEBUG_TAG, " --- Humidity Vec    " + myHumidVec.toString() );
+			//Log.d(DEBUG_TAG, " --- Time Vec        " + myTimeVec.toString() );
+
+
+			//System.out.println(" --- " + myTempVec.toString());
+			//System.out.println(" --- " + myHumidVec.toString());
+			//System.out.println(" --- " + myTimeVec.toString());
 
 			//results HeatIndex Array
 			double[] myHIarray = new double[myTempVec.size()];
@@ -1187,18 +1196,25 @@ public class HeatIndex extends Activity {
 			myMaxTime = "";
 
 			String myEnteredLocation = getLocationByAddress(editLocation.getText().toString());
+			Log.d(DEBUG_TAG, " --- getCalculateDataByEnteredAddressStr - MyEnteredLocation [[[" + myEnteredLocation + "]]]");
 
 			if (myEnteredLocation == getString(R.string.txtNotFound)) {
+				Log.d(DEBUG_TAG, " --- getCalculateDataByEnteredAddressStr - Location - Not Found");
+
 				new AlertDialog.Builder(editText1.getContext())
-						.setTitle("Notification")
-						.setMessage("We can not find the address you entered. Please verify it.")
+						.setTitle(getString(R.string.txtNotification))
+						.setMessage(getString(R.string.addressNotFound))
 						.setNeutralButton("OK", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
 
 							}
 						})
 						.show();
+				//.setTitle("Notification")
+				//.setMessage("We cannot find the address you entered. Please verify it.")
 			} else {
+				Log.d(DEBUG_TAG, " --- getCalculateDataByEnteredAddressStr - Location - Found");
+
 				double myLat = getLocationLatitudeByEnteredAddress(editLocation.getText().toString());
 				double myLong = getLocationLongitudeByEnteredAddress(editLocation.getText().toString());
 
@@ -1206,8 +1222,12 @@ public class HeatIndex extends Activity {
 				//String myLat = "42.46";
 				//String myLong = "-71.25";
 
+				Log.d(DEBUG_TAG, " --- getCalculateDataByEnteredAddressStr - Location - Lat = " + myLat + " Lon " + myLong);
+
 				//build url
 				String myUrl = "http://forecast.weather.gov/MapClick.php?lat=" + myLat + "&lon=" + myLong + "&FcstType=digitalDWML";
+
+				Log.d(DEBUG_TAG, " --- getCalculateDataByEnteredAddressStr - Location - URL " + myUrl);
 
 				//trigger an AsyncTask for getting noaa data
 				new ProcessXML(this, myUrl).execute();
