@@ -635,6 +635,8 @@ public class HeatIndex extends Activity {
 					Object stateObj = stateStr;
 					Object stateAb = myStates.get(stateObj);
 
+					if (null == stateAb) continue;
+
 					if (city != null && !city.equals("")) {
 						if (stateAb != null) {
 							cityName = city + " " + stateAb.toString();
