@@ -26,13 +26,15 @@
         <string name="btnBottomMenuHome">Inicio</string>
         <string name="btnBottomMenuBack"> &#171; Regresar</string>
         <string name="btnBottomMenuMainmenu">Más información</string>
+        <string name="btnBack">	&#171; Regresar</string>
         <string name="txtForManualData">Datos Manuales</string>
         <string name="location">Localización</string>
         <string name="txtForAt">A</string>
         <string name="done">Terminado</string>
         <string name="dol">Departamento de Trabajo de EE.UU.</string>
         <string name="txtNotFound">Extraviado</string>
-        <string name="heatIndexUpdated">Heat Index Information Updated!</string>
-        <string name="addressNotFound">We cannot find the address you entered. Please verify it.</string>
-        <string name="txtNotification">Notification</string>
+        <string name="txtHeatIndexUpdated">Índice de calor información actualizada !</string>
+        <string name="txtAddressNotFound">No podemos encontrar la dirección que ha introducido. Para verificarla.</string>
+        <string name="txtNotification">Notificación</string>
+        <string name="txtNOAADataNotAvailable">Los datos meteorológicos de la NOAA no están actualmente disponibles, por favor, introduzca su temperatura y la humedad relativa manualmente</string>
 </resources>

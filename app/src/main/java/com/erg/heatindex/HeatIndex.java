@@ -1203,7 +1203,7 @@ public class HeatIndex extends Activity {
 
 				new AlertDialog.Builder(editText1.getContext())
 						.setTitle(getString(R.string.txtNotification))
-						.setMessage(getString(R.string.addressNotFound))
+						.setMessage(getString(R.string.txtAddressNotFound))
 						.setNeutralButton("OK", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
 
@@ -1258,12 +1258,12 @@ public class HeatIndex extends Activity {
 				if (myValue == 0) {
 					new AlertDialog.Builder(editText1.getContext())
 							.setTitle("Notification")
-							.setMessage("The NOAA weather data are currently not available, please enter your temperature and relative humidity manually.")
+							.setMessage(getString(R.string.txtNOAADataNotAvailable))
 							.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int which) {
+						public void onClick(DialogInterface dialog, int which) {
 
-								}
-							})
+						}
+					})
 							.show();
 				} else {
 					if (dataValid == 0) {   //less than 80
@@ -1592,7 +1592,7 @@ public class HeatIndex extends Activity {
 		Log.d(DEBUG_TAG, " --- showToast - BEGIN");
 
 		Context context = getApplicationContext();
-		CharSequence text = getString(R.string.heatIndexUpdated);
+		CharSequence text = getString(R.string.txtHeatIndexUpdated);
 		int duration = Toast.LENGTH_SHORT;
 
 		Toast toast = Toast.makeText(context, text, duration);

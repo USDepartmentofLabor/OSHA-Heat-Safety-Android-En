@@ -24,6 +24,7 @@
     <string name="txtHumidity">percent Humidity</string>
     <string name="btnBottomMenuBack"> &#171; Back</string>
     <string name="btnBottomMenuMainmenu">More Info</string>
+    <string name="btnBottomMenuHome">Home</string>
     <string name="btnBack">	&#171; Back</string>
     <string name="txtForManualData">Manual Data</string>
     <string name="location">Location</string>
@@ -31,7 +32,8 @@
     <string name="done">Done</string>
     <string name="dol">U.S. Department of Labor</string>
     <string name="txtNotFound">Not Found</string>
-    <string name="heatIndexUpdated">Heat Index Information Updated!</string>
-    <string name="addressNotFound">We cannot find the address you entered. Please verify it.</string>
+    <string name="txtHeatIndexUpdated">Heat Index Information Updated!</string>
+    <string name="txtAddressNotFound">We cannot find the address you entered. Please verify it.</string>
     <string name="txtNotification">Notification</string>
+    <string name="txtNOAADataNotAvailable">The NOAA weather data are currently not available, please enter your temperature and relative humidity manually.</string>
 </resources>
