@@ -676,8 +676,14 @@ public class HeatIndex extends Activity {
 
 					String city = adrs.getLocality();
 					String stateStr = adrs.getAdminArea();
+
+					if (null == stateStr) continue;
+
 					Object stateObj = stateStr;
 					Object stateAb = myStates.get(stateObj);
+
+					if (null == stateAb) continue;
+
 					if (city != null && !city.equals("")) {
 						cityName = city + ", " + stateAb.toString();
 						break;
@@ -1284,10 +1290,11 @@ public class HeatIndex extends Activity {
 
 						setUIforMaxResult(valueMaxHeatIndex);
 					}
+
+					//Show the Toast for information notification
+					//showToast();
 				}
 
-			//Show the Toast for information notification
-			showToast();
 
 		}   //end of try
 		catch (Exception e) {
@@ -1392,10 +1399,15 @@ public class HeatIndex extends Activity {
 
 	public void myHomeButtonClickHandler(View target) {
 		final WebView mWebView= (WebView) findViewById(R.id.mywebview);
-		mWebView.setVisibility(View.GONE);
-		resetAppTitleArea(true);
-		resetMyHomeArea(true);
-		resetBackgroundColorOfActionBar();
+
+		if (mWebView.canGoBack()) {
+			mWebView.goBack();
+		} else {
+			mWebView.setVisibility(View.GONE);
+			resetAppTitleArea(true);
+			resetMyHomeArea(true);
+			resetBackgroundColorOfActionBar();
+		}
 	}
 
 	//true - show Home
