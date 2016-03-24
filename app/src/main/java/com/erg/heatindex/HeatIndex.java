@@ -1292,7 +1292,7 @@ public class HeatIndex extends Activity {
 					}
 
 					//Show the Toast for information notification
-					//showToast();
+					showToast();
 				}
 
 
