@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/pre-dexed/release/internal_impl-22.0.0-fc9b5568767fae7f79504ceede3c6e76907d9b49.jar" />
+    </item>
+    <item
+        jar="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex dex="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/pre-dexed/release/classes-8a489a973e00adcd860ca663df12cfd4c62a9b6f.jar" />
+    </item>
+    <item
+        jar="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/pre-dexed/release/classes-5ed995b6e17f92f80431b1cacb03bb68c780e1aa.jar" />
+    </item>
+    <item
+        jar="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9c9dea9e85aceb09d95df5e6f7bc8a43fc286068">
+        <dex dex="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/pre-dexed/release/classes-09abd85e93b30e0c7da1bcd7a5936b12d099bab1.jar" />
+    </item>
+    <item
+        jar="/Users/pulsifer-michael/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/pulsifer-michael/Documents/src-mobile/OSHA-Heat-Safety-Android-En/app/build/intermediates/pre-dexed/release/support-annotations-22.0.0-24a75340052fd83ab6b2c70bc6029a81dfb7ac9a.jar" />
+    </item>
+
+</items>

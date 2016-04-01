@@ -4,9 +4,11 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.erg.heatindex"
+        applicationId "gov.dol.heatindex"
         minSdkVersion 16
         targetSdkVersion 22
+        versionCode 4
+        versionName "2.0"
     }
 
     buildTypes {
