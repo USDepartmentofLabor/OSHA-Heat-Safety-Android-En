@@ -44,15 +44,7 @@ import java.util.Vector;
 
 
 public class HeatIndex extends Activity {
-	private final String DEBUG_TAG = "HeadIndex";
-
-	private double HIdouble = 0;
-
-	private int myValid1 = 1;  //temp is number
-	private int myValid2 = 1;    //humidity is number
-
-	private int myValid11 = 1; //temp is in valid range
-	private int myValid22 = 1; //humidity is in valid range
+	private final String DEBUG_TAG = "HeatIndex";
 
 	private int dataValid = 1;    //if current temperature is lower than 80, dataValid=0
 
@@ -703,11 +695,11 @@ public class HeatIndex extends Activity {
 	}
 
 
-	public double getHeadIndexFromNoaaData(ParsedDataSetWeather parsedExampleDataSet) {
-		Log.d(DEBUG_TAG, " --- getHeadIndexFromNoaaData - BEGIN");
+	public double getHeatIndexFromNoaaData(ParsedDataSetWeather parsedExampleDataSet) {
+		Log.d(DEBUG_TAG, " --- getHeatIndexFromNoaaData - BEGIN");
 
 		try {
-			dataValid = 1;
+			this.dataValid = 1;
 
 			//get today's date
 			Calendar rightNow = Calendar.getInstance();
@@ -814,7 +806,7 @@ public class HeatIndex extends Activity {
 				myValue = myHIarray[0];
 				valueCurrentHeatIndex = myValue;
 				if (valueTemp < 80) {
-					dataValid = 0;    //too low
+					this.dataValid = 0;    //too low
 				}
 			}
 
@@ -849,7 +841,7 @@ public class HeatIndex extends Activity {
 				}
 
 				if (myCountMax == size) {
-					dataValid = 0;   //invalid, pick the current temp and humidity
+					this.dataValid = 0;   //invalid, pick the current temp and humidity
 					valueTemp = myTempArray2[0];
 					valueHumid = myHumidArray2[0];
 				}
@@ -886,19 +878,20 @@ public class HeatIndex extends Activity {
 
 				myMaxTime = myMaxTimeStr;
 
-				if (dataValid == 0) {
+				if (this.dataValid == 0) {
 					myValue = 1;     //myValue=1 means we got the weather data, but it is too low and not valid for HI calculation
+					valueMaxHeatIndex = myValue;
 				}
 			} else {
 				myValue = 0;   //error in getting NOAA data
 				myMaxTime = "";
 			}
 
-			Log.d(DEBUG_TAG, " --- getHeadIndexFromNoaaData - END");
+			Log.d(DEBUG_TAG, " --- getHeatIndexFromNoaaData - END");
 			return myValue;
 		} catch (Exception e) {
 			Log.e(DEBUG_TAG, "NOAA failed", e);
-			Log.d(DEBUG_TAG, " --- getHeadIndexFromNoaaData - END");
+			Log.d(DEBUG_TAG, " --- getHeatIndexFromNoaaData - END");
 			return 0;
 		}
 	}
@@ -1137,11 +1130,11 @@ public class HeatIndex extends Activity {
 
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
-		myValid1 = 1;
-		myValid2 = 1;
+		int validTypeTemp = 1;
+		int validTypeHumidity = 1;
 
-		myValid11 = 1;
-		myValid22 = 1;
+		int validRangeTemp = 1;
+		int validRangeHumidity = 1;
 
 		//Hide Soft Keyboard
 		imm.hideSoftInputFromWindow(((EditText) findViewById(R.id.humidity)).getWindowToken(), 0);
@@ -1158,21 +1151,21 @@ public class HeatIndex extends Activity {
 					.getText().toString();
 
 			if (Double.parseDouble(input1) < 80) {
-				myValid11 = 0;
+				validRangeTemp = 0;
 			}
 
-			if (myValid11 == 1 && myValid22 == 1) {
-				int d1 = Integer.parseInt(input1);
-				int d2 = Integer.parseInt(input2);
-				double myValue;
-				myValue = calIndex.heatIndexCal(d1, d2);
-				HIdouble = myValue;
+			if (validRangeTemp == 1 && validRangeHumidity == 1) {
+				int temp = Integer.parseInt(input1);
+				int humidity = Integer.parseInt(input2);
+				double heatIndex;
+				heatIndex = calIndex.heatIndexCal(temp, humidity);
 
-				setUIforResults(HIdouble);
+
+				setUIforResults(heatIndex);
 				TextView textMiddle = ((TextView) findViewById(R.id.now));
 				textMiddle.setText(getString(R.string.labelForCalculated));
 			} else {
-				if (myValid1 == 1 && myValid2 == 1 && myValid11 == 0) {
+				if (validTypeTemp == 1 && validTypeHumidity == 1 && validRangeTemp == 0) {
 					setUIforManualLow();
 				}
 			}
@@ -1254,7 +1247,7 @@ public class HeatIndex extends Activity {
 		Log.d(DEBUG_TAG, " --- callBackData - BEGIN");
 
 		double myValue;
-		myValue = getHeadIndexFromNoaaData(myData);
+		myValue = getHeatIndexFromNoaaData(myData);
 
 		EditText editText1 = ((EditText) findViewById(R.id.temp));
 		EditText editText2 = ((EditText) findViewById(R.id.humidity));
@@ -1274,7 +1267,7 @@ public class HeatIndex extends Activity {
 					})
 							.show();
 				} else {
-					if (dataValid == 0) {   //less than 80
+					if (this.dataValid == 0) {   //less than 80
 						setUIforCurrentDataTooLow();
 						textMiddle.setText(getString(R.string.labelForNow));
 
