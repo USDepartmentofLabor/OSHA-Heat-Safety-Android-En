@@ -4,6 +4,8 @@ public class calIndex{
 	
 	public static double heatIndexCal(int F, int rh) {
 		double Hindex;
+
+		if (F < 80) return (double)(0);
 				
 	    Hindex = -42.379 + 2.04901523*F + 10.14333127*rh;
 	    Hindex = Hindex - 0.22475541*F*rh - 6.83783*Math.pow(10,-3)*F*F;
