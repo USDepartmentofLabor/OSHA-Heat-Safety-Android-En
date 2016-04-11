@@ -627,7 +627,7 @@ public class HeatIndex extends Activity {
 					Object stateObj = stateStr;
 					Object stateAb = myStates.get(stateObj);
 
-					if (null == stateAb) continue;
+					//if (null == stateAb) continue;
 
 					if (city != null && !city.equals("")) {
 						if (stateAb != null) {
@@ -674,11 +674,17 @@ public class HeatIndex extends Activity {
 					Object stateObj = stateStr;
 					Object stateAb = myStates.get(stateObj);
 
-					if (null == stateAb) continue;
+					//if (null == stateAb) continue;
 
 					if (city != null && !city.equals("")) {
-						cityName = city + ", " + stateAb.toString();
-						break;
+						if (stateAb != null) {
+							cityName = city + ", " + stateAb.toString();
+							break;
+						}
+						else {
+							cityName = city + ", " + stateStr;
+							break;
+						}
 					} else {
 
 					}
@@ -1322,6 +1328,7 @@ public class HeatIndex extends Activity {
 		myDOLMenu.setVisible(true);
 		return true;
 	}
+
 
 
 	/*
