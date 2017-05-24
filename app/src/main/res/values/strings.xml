@@ -36,4 +36,7 @@
     <string name="txtAddressNotFound">We cannot find the address you entered. Please verify it.</string>
     <string name="txtNotification">Notification</string>
     <string name="txtNOAADataNotAvailable">The NOAA weather data are currently not available, please enter your temperature and relative humidity manually.</string>
+    <string name="noticeButton">Upgrade App</string>
+    <string name="noticeTitle">Notice</string>
+    <string name="noticeText">An updated version of this app is available from the Centers for Disease Control and Prevention (CDC).\n\nPlease delete and replace this app by September 30, 2017.\n</string>
 </resources>
