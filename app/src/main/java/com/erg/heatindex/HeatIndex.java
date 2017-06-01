@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
@@ -18,6 +19,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -182,6 +184,8 @@ public class HeatIndex extends Activity {
 		myStates.put("Wyoming", "WY");
 		myStates.put("District of Columbia", "D.C.");
 
+		// Added by William Scholtes (Attain) to notify user of App update to version 3.0
+		showAlert(this, getResources().getString(R.string.noticeText));
 
 		//calculate current location info
 		String myLocation = getCurrentLocationName();
@@ -1613,6 +1617,41 @@ public class HeatIndex extends Activity {
 		toast.show();
 
 		Log.d(DEBUG_TAG, " --- showToast - END");
+	}
+
+	// Added by William Scholtes (Attain) to notify user of App Upgrade to version 3.0
+	public void showAlert(Activity activity, String message) {
+		TextView title = new TextView(activity);
+		title.setText(R.string.noticeTitle);
+		title.setTypeface(null, Typeface.BOLD);
+		title.setPadding(10, 10, 10, 10);
+		title.setGravity(Gravity.CENTER);
+		title.setTextColor(Color.BLACK);
+		title.setTextSize(20);
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		builder.setCustomTitle(title);
+		builder.setMessage(message);
+		builder.setCancelable(false);
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener()
+		{
+			public void onClick (DialogInterface dialog,int which)
+			{
+				dialog.cancel();
+			}
+		});
+		builder.setNegativeButton(R.string.noticeButton, new DialogInterface.OnClickListener()
+		{
+			public void onClick (DialogInterface dialog,int which)
+			{
+				Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=erg.com.nioshheatindex");
+				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+				startActivity(intent);
+				dialog.dismiss();
+			}
+		});
+		AlertDialog alert = builder.show();
+		TextView messageText = (TextView)alert.findViewById(android.R.id.message);
+		messageText.setGravity(Gravity.CENTER);
 	}
 }
 

@@ -37,4 +37,7 @@
         <string name="txtAddressNotFound">No podemos encontrar la dirección que ha introducido. Para verificarla.</string>
         <string name="txtNotification">Notificación</string>
         <string name="txtNOAADataNotAvailable">Los datos meteorológicos de la NOAA no están actualmente disponibles, por favor, introduzca su temperatura y la humedad relativa manualmente</string>
+        <string name="noticeButton">Actualice la Aplicación</string>
+        <string name="noticeTitle">Aviso</string>
+        <string name="noticeText">Los Centros para el Control y la Prevención de Enfermedades (CDC) tienen disponible una aplicación actualizada.\n\nPor favor, borre y reemplace esta aplicación a más tardar el 30 de septiembre de 2017.\n</string>
 </resources>
